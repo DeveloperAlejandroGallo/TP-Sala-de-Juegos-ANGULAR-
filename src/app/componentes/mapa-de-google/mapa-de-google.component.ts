@@ -20,7 +20,8 @@ export class MapaDeGoogleComponent implements OnInit {
   ngOnInit() {
   }
 
-
+  mapClicked(event)
+  {}
   
 
 

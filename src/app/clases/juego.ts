@@ -3,25 +3,28 @@ export abstract class Juego {
   public jugador: string;
   public gano = false;
 
-  constructor(nombre?: string, gano?: boolean,jugador?:string) {
-    if (nombre)
-      this.nombre = nombre;
+  constructor(nombre?: string, gano?: boolean, jugador?: string) {
+    if (nombre) {
+        this.nombre = nombre;
+    }
 
-    if (gano)
+    if (gano) {
       this.gano = gano;
-    if(jugador)
-      this.jugador=jugador;
-    else
-      this.jugador= "natalia natalia";
+    }
+
+    if (jugador) {
+      this.jugador = jugador;
+    } else {
+        this.jugador = 'natalia natalia';
+    }
   }
 
 
-  
 
-  public abstract verificar():boolean; 
-  
+  public abstract verificar(): boolean;
+
   public retornarAyuda() {
-    
-    return "NO hay Ayuda definida";
+
+    return 'NO hay Ayuda definida';
   }
 }
