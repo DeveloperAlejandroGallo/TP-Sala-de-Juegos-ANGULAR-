@@ -1,6 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .panel {
-    height: 200px;
-    background-image: url("../../../assets/imagenes/cabecera.png");
+    height: 25%;
+    width: 100%;
+    background-image: url("../../../assets/imagenes/cabecera.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -30,4 +36,12 @@
 .hero-text a:hover {
     background-color: #555;
     color: white;
+}
+
+.titulo {
+    font-size: 100px;
+    background-color: rgb(3, 165, 165);
+    font-weight: bolder;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
 }

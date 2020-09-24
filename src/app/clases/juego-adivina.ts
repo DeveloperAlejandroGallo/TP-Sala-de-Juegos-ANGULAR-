@@ -6,19 +6,17 @@ export class JuegoAdivina extends Juego
     numeroIngresado = 0;
 
     constructor(nombre?: string, gano?: boolean, jugador?: string) {
-        super('Adivina el número', gano, jugador);
+        super('Adivina el n\u00FAmero', gano, jugador);
       }
 
     public verificar() {
-        if (this.numeroIngresado === this.numeroSecreto) {
+       
+        if (this.numeroIngresado == this.numeroSecreto) {
           this.gano = true;
         }
-        if (this.gano) {
-          return true;
-        } else {
-          return false;
-        }
+        return this.gano;
      }
+
      public generarnumero() {
         this.numeroSecreto = Math.floor((Math.random() * 100) + 1);
         console.info('numero Secreto:' + this.numeroSecreto);

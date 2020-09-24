@@ -1,6 +1,6 @@
-.imagenDeMenu{
-width: 80px;
-height: 70px;
+.imagenDeMenu {
+    width: 100px;
+    height: 100px;
 }
 
 .hero-text {
@@ -8,6 +8,38 @@ height: 70px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-25%, -25%);
     color: #100000;
-    }
+}
+
+img {
+    border-radius: 50px;
+    padding: 5px;
+    border: 1px solid #330202;
+    margin: 20px;
+}
+
+#menuppal {
+    background-image: url("../../../assets/imagenes/fondoMenu.gif");
+}
+
+h6 {
+    font-size: 80px;
+    color: lightgoldenrodyellow;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.transparente {
+    background-color: rgb(172, 172, 172, 0.7);
+}
+
+p {
+    color: rgb(2, 61, 117);
+    font-weight: bold;
+}
+
+h4 {
+    color: black;
+    font-size: 24px;
+    font-weight: bolder;
+}

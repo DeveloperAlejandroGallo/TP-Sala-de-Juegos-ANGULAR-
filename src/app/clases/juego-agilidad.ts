@@ -2,8 +2,12 @@ import { Juego } from '../clases/juego';
 
 export class JuegoAgilidad extends Juego {
 
-  numeroSecreto = 0;
+  primerNumero = 0;
+  segundoNumero = 0;
+  operador = '';
+  respuesta = 0;
   numeroIngresado = 0;
+
   
   constructor(nombre?: string, gano?: boolean, jugador?: string)
   {
@@ -12,17 +16,15 @@ export class JuegoAgilidad extends Juego {
 
   public verificar() {
 
-    this.gano = true;
-
-    return true;
-
+    this.gano = this.respuesta == this.numeroIngresado;
+    return this.gano;
 
     }
 
-     public generarnumero() {
+    //  public generarnumero() {
 
-        this.gano = false;
-      }
+    //     this.gano = false;
+    //   }
 
       public retornarAyuda() {
 

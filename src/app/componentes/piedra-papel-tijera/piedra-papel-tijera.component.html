@@ -1,0 +1,30 @@
+<div id="fondo">
+    <div class="container">
+        <div class="row">
+            <div class="titulo">
+                <p>Piedra Papel o Tijeras</p>
+            </div>
+        </div>
+    </div>
+    <div class="container" *ngIf='iniciarJuego'>
+        <div class="row">
+            <div class="col-md-4">
+                <button (click)="choise_click(0)"><img src="../../../assets/imagenes/Piedra.png"></button>
+            </div>
+            <div class="col-md-4">
+                <button (click)="choise_click(1)"><img src="../../../assets/imagenes/Papel.png"></button>
+            </div>
+            <div class="col-md-4">
+                <button (click)="choise_click(2)"><img src="../../../assets/imagenes/Tijeras.png"></button>
+            </div>
+        </div>
+    </div>
+    <div class="container" *ngIf='iniciarJuego'>
+        <div class="transparente">
+            <p id="puntaje">Puntaje: PC: {{nuevoJuego.puntajePC}} - Usted: {{nuevoJuego.puntajeJugador}} </p>
+        </div>
+    </div>
+    <div class="container">
+        <button id="button1" (click)="nuevo()">Nuevo Juego</button>
+    </div>
+</div>
