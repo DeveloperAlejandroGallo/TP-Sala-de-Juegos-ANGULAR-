@@ -8,14 +8,14 @@ a:link {
 /* visited link */
 
 a:visited {
-    color: #00FF00;
+    color: #002fff;
 }
 
 
 /* mouse over link */
 
 a:hover {
-    color: #FF00FF;
+    color: #00ff33;
 }
 
 

@@ -55,6 +55,7 @@ import { InputJugadoresComponent } from './componentes/input-jugadores/input-jug
 import { SexoPipe } from './pipes/sexo.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/piedra-papel-tijera.component';
+import { TatetiComponent } from './componentes/tateti/tateti.component';
 
 // Material
 
@@ -84,7 +85,8 @@ import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/pi
     JugadoresListadoComponent,
     InputJugadoresComponent,
     SexoPipe,
-    PiedraPapelTijeraComponent
+    PiedraPapelTijeraComponent,
+    TatetiComponent
   ],
   imports: [
     BrowserModule,

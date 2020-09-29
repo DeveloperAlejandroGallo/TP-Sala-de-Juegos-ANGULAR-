@@ -1,0 +1,43 @@
+<div id="fondo">
+    <div class="container">
+        <div class="row">
+            <div class="titulo">
+                <p>Ta Te Ti</p>
+            </div>
+        </div>
+    </div>
+    <div class="container botonera">
+        <table>
+            <tr>
+                <td colspan="3" class="turno">{{mensaje}}</td>
+            </tr>
+            <tr>
+                <td class="keys" id="celda00" (click)="jugadaHumano(0,0)">-</td>
+                <td class="keys" id="celda01" (click)="jugadaHumano(0,1)">-</td>
+                <td class="keys" id="celda02" (click)="jugadaHumano(0,2)">-</td>
+            </tr>
+            <tr>
+                <td class="keys" id="celda10" (click)="jugadaHumano(1,0)">-</td>
+                <td class="keys" id="celda11" (click)="jugadaHumano(1,1)">-</td>
+                <td class="keys" id="celda12" (click)="jugadaHumano(1,2)">-</td>
+            </tr>
+            <tr>
+                <td class="keys" id="celda20" (click)="jugadaHumano(2,0)">-</td>
+                <td class="keys" id="celda21" (click)="jugadaHumano(2,1)">-</td>
+                <td class="keys" id="celda22" (click)="jugadaHumano(2,2)">-</td>
+            </tr>
+        </table>
+    </div>
+    <div class="container ">
+        <div class="transparente puntaje ">
+            <p style="font-weight: bolder; color:whitesmoke; font-style: oblique; ">Puntaje: </p>
+            <p>Usted: {{nuevoJuego.puntajeJugador}} </p>
+            <p>PC: {{nuevoJuego.puntajePC}} </p>
+        </div>
+    </div>
+    <div class="container botonera ">
+        <button id="button1 " (click)="nuevo() ">Nuevo Juego</button>
+        <button id="button1 " *ngIf='iniciarJuego ' (click)="limpiarTablero() ">Limpiar Tablero</button>
+    </div>
+
+</div>

@@ -1,6 +1,9 @@
 .imagenDeMenu {
     width: 100px;
     height: 100px;
+    border-radius: 50px;
+    padding: 5px;
+    border: 1px solid #330202;
 }
 
 .hero-text {
@@ -8,19 +11,14 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-25%, -25%);
+    transform: translate(-50%, -50%);
     color: #100000;
 }
 
-img {
-    border-radius: 50px;
-    padding: 5px;
-    border: 1px solid #330202;
-    margin: 20px;
-}
-
-#menuppal {
-    background-image: url("../../../assets/imagenes/fondoMenu.gif");
+.menuppal {
+    padding-top: 25px;
+    background-image: url("../../../assets/imagenes/FondoMundoVerdoso.png");
+    border-bottom: 1px solid rgb(0, 128, 68);
 }
 
 h6 {
@@ -29,17 +27,35 @@ h6 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
-.transparente {
-    background-color: rgb(172, 172, 172, 0.7);
-}
-
-p {
-    color: rgb(2, 61, 117);
-    font-weight: bold;
+.fondoitemmenu {
+    background-color: rgb(172, 172, 172, 0.5);
+    border-radius: 5px;
+    margin-top: 5px;
 }
 
 h4 {
     color: black;
     font-size: 24px;
     font-weight: bolder;
+}
+
+.menucontainer {
+    padding: 10px
+}
+
+.menutitulo {
+    margin-top: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.media-body {
+    padding: 15px;
+    margin: 0px;
+}
+
+.media-body p {
+    font-size: 20px;
+    color: rgb(2, 61, 117);
+    font-weight: bold;
 }
