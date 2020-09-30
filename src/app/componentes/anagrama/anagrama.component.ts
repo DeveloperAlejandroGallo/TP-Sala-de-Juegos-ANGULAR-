@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JuegoAnagrama } from '../../clases/juego-anagrama';
 
 @Component({
   selector: 'app-anagrama',
@@ -7,9 +8,59 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnagramaComponent implements OnInit {
 
+  nuevoJuego: JuegoAnagrama;
+  juegoActivo: boolean;
+  repetidor:any;
+  tiempo = 100;
+  esperando = false;
+  mensaje: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.juegoActivo = false;
+    this.nuevoJuego = new JuegoAnagrama();
+  }
+
+  iniciarJuego()
+  {
+    this.juegoActivo = true;
+    this.tiempo = 100;
+    this.nuevoJuego.puntaje = 0;
+    this.nuevoJuego.seleccionarUno();
+    this.repetidor = setInterval(() => {
+      this.tiempo--;
+      // console.log('llego', this.tiempo);
+      if (this.tiempo === 0) {
+        clearInterval(this.repetidor);
+        // this.verificar();
+        this.finDelJuego();
+      }
+    }, 900);
+  }
+
+  verificar() {
+    console.log(`anagrama: ${this.nuevoJuego.anagrama} es ${this.nuevoJuego.respuestaCorrecta} puso ${this.nuevoJuego.respuestaUsr}` );
+    this.esperando = true;
+    this.nuevoJuego.verificar();
+    if (this.nuevoJuego.gano)
+    {
+      this.mensaje = "Excelente!"
+    } else {
+      this.mensaje = 'Vuelva a intentarlo';
+    }
+  }
+
+  proximaPalabra(){
+    this.nuevoJuego.seleccionarUno();
+  }
+
+  finDelJuego()
+  {
+    // this.juegoActivo = false;
+    this.tiempo = 100;
+    this.mensaje = `FIN DE LA PARTIDA\nPUNTAJE: ${this.nuevoJuego.puntaje}`;
+    this.nuevoJuego.init();
   }
 
 }

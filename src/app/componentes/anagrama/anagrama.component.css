@@ -1,0 +1,107 @@
+.fondo {
+    height: 100%;
+    background-image: url("../../../assets/imagenes/fondoAnagrama.jpg");
+    background-size: 100% 100%;
+    /* background-color: salmon; */
+    padding: 50px;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    font-size: 60px;
+    background-color: rgba(120, 222, 226, 0.274);
+    color: rgb(195, 135, 24);
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    margin: auto;
+    font-style: italic;
+}
+
+.juego {
+    padding: 15px;
+    border-radius: 15px;
+}
+
+input[type=text],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #53ac57be;
+}
+
+.divform {
+    border-radius: 5px;
+    background-color: rgba(120, 222, 226, 0.274);
+    padding: 20px;
+}
+
+form label {
+    font-size: 18px;
+    color: rgb(168, 87, 11);
+    font-weight: bolder;
+}
+
+.timer {
+    font-size: 30px;
+    padding: 15px;
+    color: rgb(199, 53, 53);
+    background-color: rgba(120, 222, 226, 0.274);
+    font-weight: bolder;
+}
+
+.timer label {
+    padding: 25px;
+}
+
+button {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    margin-top: 50px;
+}
+
+.puntaje {
+    color: rgba(10, 10, 26);
+    background-color: rgba(120, 222, 226, 0.274);
+    font-size: 26px;
+    font-weight: bolder;
+}
+
+.proximaPalabra {
+    background-color: orange;
+}

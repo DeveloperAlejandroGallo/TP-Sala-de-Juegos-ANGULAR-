@@ -1,3 +1,32 @@
-<p>
-  anagrama works!
-</p>
+<div class="fondo">
+    <div class="container fluid">
+        <div class="titulo">
+            <p>Anagrama</p>
+        </div>
+        <div class="container">
+            <div class="juego" *ngIf='juegoActivo'>
+                <div class="timer">
+                    <label>Tiempo: {{tiempo}}</label>
+                    <label>{{mensaje}}</label>
+                </div>
+                <div class="divform">
+                    <form>
+                        <label for="anagrama">ANAGRAMA: </label>
+                        <input type="text" id="anagrama" value={{nuevoJuego.anagrama}} disabled="true" name="anagramaName" />
+                        <label for="respuesta">RESPUESTA: </label>
+                        <input type="text" id="respuesta" [(ngModel)]='nuevoJuego.respuestaUsr' name="respuestaUsrName" />
+                        <!-- <button class="button ui-priority-primary" (click)='verificar()'>Verificar</button> -->
+                        <input type="submit" value="Verificar" (click)='verificar()'>
+                        <input type="submit" class="proximaPalabra" value="Proxima Palabra" (click)='proximaPalabra()'>
+                    </form>
+                </div>
+                <div class="puntaje">
+                    <p>Cantidad de palabras correctas: {{nuevoJuego.puntaje}}</p>
+                </div>
+            </div>
+            <div class="initJuego">
+                <button (click)='iniciarJuego()'>Nuevo Juego</button>
+            </div>
+        </div>
+    </div>
+</div>
