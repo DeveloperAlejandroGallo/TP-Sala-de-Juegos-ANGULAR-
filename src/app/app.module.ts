@@ -57,6 +57,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/piedra-papel-tijera.component';
 import { TatetiComponent } from './componentes/tateti/tateti.component';
 import { MemotestComponent } from './componentes/memotest/memotest.component';
+import { AhorcadoComponent } from './componentes/ahorcado/ahorcado.component';
 
 // Material
 
@@ -88,7 +89,8 @@ import { MemotestComponent } from './componentes/memotest/memotest.component';
     SexoPipe,
     PiedraPapelTijeraComponent,
     TatetiComponent,
-    MemotestComponent
+    MemotestComponent,
+    AhorcadoComponent
   ],
   imports: [
     BrowserModule,

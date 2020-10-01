@@ -25,6 +25,7 @@ import { PiedraPapelTijeraComponent } from '../componentes/piedra-papel-tijera/p
 import { TatetiComponent } from '../componentes/tateti/tateti.component';
 import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
 import { MemotestComponent } from '../componentes/memotest/memotest.component';
+import { AhorcadoComponent } from '../componentes/ahorcado/ahorcado.component';
 
 
 // declaro donde quiero que se dirija
@@ -50,7 +51,8 @@ children:
       {path: 'PiedraPapelTijera', component: PiedraPapelTijeraComponent},
       {path: 'Tateti', component: TatetiComponent},
       {path: 'Anagrama', component: AnagramaComponent},
-      {path: 'Memotest', component: MemotestComponent}
+      {path: 'Memotest', component: MemotestComponent},
+      {path: 'Ahorcado', component: AhorcadoComponent}
     ]
 },
 {path: '**' , component: ErrorComponent},

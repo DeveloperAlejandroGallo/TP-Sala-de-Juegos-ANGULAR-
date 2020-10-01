@@ -1,0 +1,34 @@
+<div class="fondo container-lg">
+    <div class="container">
+        <div *ngIf='juegoActivo'>
+            <div class="titulo">
+                <p>Ahorcado</p>
+            </div>
+            <div class="tablero">
+                <div class="img img0" id="ahorcado"></div>
+                <table>
+                    <tr>
+                        <td class="letra" *ngFor='let letra of nuevoJuego.palabraConGuiones'>{{letra}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="letras">
+                <div class="row">
+                    <div class="col text-center">
+                        <button *ngFor="let letra of nuevoJuego.letras" class="btn btn-primary" (click)='letraClick(letra)'> {{ letra }} </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mensaje">
+            <div class="row">
+                <div class="col text-center">
+                    {{mensaje}}
+                </div>
+            </div>
+        </div>
+        <div class="container botonera ">
+            <button id="button1 " (click)="nuevo() ">Nuevo Juego</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+.fondo {
+    background-image: url('../../../assets/imagenes/FondoAhorcado.jpg');
+    height: 600px;
+    background-size: 100% 100%;
+    padding: 50px;
+}
+
+.tablero {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+table {
+    margin-left: 50px;
+    padding-top: 100px;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    font-size: 60px;
+    background-color: rgba(47, 47, 185, 0.274);
+    color: rgba(58, 23, 175);
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    margin-top: 60px;
+    margin-bottom: 100px;
+    margin: auto;
+    font-style: italic;
+    padding-bottom: 20px;
+}
+
+.letra {
+    background-color: white;
+    color: blue;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 10px;
+}
+
+.mensaje {
+    color: rgb(255, 255, 255);
+    margin-top: 15px;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+}
+
+.img0 {
+    background-image: url('../../../assets/imagenes/Ahorcado/00.png');
+    background-size: 100%;
+    width: 320px;
+    height: 320px;
+}
+
+.img1 {
+    background-image: url('../../../assets/imagenes/Ahorcado/01.png');
+    background-size: 100%;
+    width: 320px;
+    height: 320px;
+}
+
+.img2 {
+    background-image: url('../../../assets/imagenes/Ahorcado/02.png');
+    background-size: 100%;
+    width: 320px;
+    height: 320px;
+}
+
+.img3 {
+    background-image: url('../../../assets/imagenes/Ahorcado/03.png');
+    background-size: 100%;
+    width: 320px;
+    height: 320px;
+}
+
+.img4 {
+    background-image: url('../../../assets/imagenes/Ahorcado/04.png');
+    background-size: 100%;
+    width: 320px;
+    height: 320px;
+}
+
+.img5 {
+    background-image: url('../../../assets/imagenes/Ahorcado/05.png');
+    background-size: 100%;
+    width: 320px;
+    height: 320px;
+}
+
+.img6 {
+    background-image: url('../../../assets/imagenes/Ahorcado/06.png');
+    background-size: 100%;
+    width: 320px;
+    height: 320px;
+}
+
+.img7 {
+    background-image: url('../../../assets/imagenes/Ahorcado/07.png');
+    background-size: 100%;
+    width: 320px;
+    height: 320px;
+}
+
+.img8 {
+    background-image: url('../../../assets/imagenes/Ahorcado/08.png');
+    background-size: 100%;
+    width: 320px;
+    height: 320px;
+}
+
+button {
+    margin-top: 50px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    border-radius: 10px;
+}

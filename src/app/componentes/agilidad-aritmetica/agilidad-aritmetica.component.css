@@ -1,3 +1,15 @@
 form {
     background-color: lightblue;
 }
+
+.container {
+    align-items: center;
+}
+
+.fondo {
+    height: 600px;
+    background-image: url("../../../assets/imagenes/FondoAgilidad.jpg");
+    background-size: 100% 100%;
+    /* background-color: salmon; */
+    padding: 50px;
+}

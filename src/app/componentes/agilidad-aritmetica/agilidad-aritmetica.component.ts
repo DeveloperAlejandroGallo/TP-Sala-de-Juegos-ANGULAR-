@@ -30,6 +30,7 @@ export class AgilidadAritmeticaComponent implements OnInit {
 
   NuevoJuego() {
     this.ocultarVerificar = false;
+    this.nuevoJuego.numeroIngresado = 0;
     this.esperando = false;
     this.generarNumero();
     this.repetidor = setInterval(() => {
@@ -40,7 +41,7 @@ export class AgilidadAritmeticaComponent implements OnInit {
         this.verificar();
         this.ocultarVerificar = true;
         this.Tiempo = 10;
-      }
+        }
     }, 900);
   }
 
