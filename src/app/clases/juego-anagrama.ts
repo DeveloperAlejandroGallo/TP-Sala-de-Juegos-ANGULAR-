@@ -14,7 +14,7 @@ export class JuegoAnagrama extends Juego {
       anagramaTable: Array<[string, string]>;
       puntaje: number;
 
-    init(){
+    inicializar(){
         this.anagrama = '';
         this.respuestaCorrecta = '';
         this.respuestaUsr = '';

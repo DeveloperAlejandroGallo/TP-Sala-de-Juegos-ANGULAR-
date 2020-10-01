@@ -9,9 +9,9 @@ export class JuegoTateti extends Juego {
       }
 
       // 0 es no asignado, 1 jugador humano, 2 jugador maquina
-      tateti = [[0, 0, 0],
-                [0, 0, 0],
-                [0, 0, 0]];
+    tateti = [[0, 0, 0],
+              [0, 0, 0],
+              [0, 0, 0]];
 
     HUMANO: 1;
     MAQUINA: 2;

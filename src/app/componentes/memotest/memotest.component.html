@@ -1,0 +1,61 @@
+<div id="fondo">
+    <div class="container">
+        <div class="row">
+            <div class="titulo">
+                <p>MEMOTEST</p>
+            </div>
+        </div>
+    </div>
+    <div class="container botonera" *ngIf='iniciarJuego'>
+        <table>
+            <tr>
+                <td class="keys incognita" id="celda0" (click)="jugadaHumano(0)">-</td>
+                <td class="keys incognita" id="celda1" (click)="jugadaHumano(1)">-</td>
+                <td class="keys incognita" id="celda2" (click)="jugadaHumano(2)">-</td>
+                <td class="keys incognita" id="celda3" (click)="jugadaHumano(3)">-</td>
+                <td class="keys incognita" id="celda4" (click)="jugadaHumano(4)">-</td>
+            </tr>
+            <tr>
+                <td class="keys incognita" id="celda5" (click)="jugadaHumano(5)">-</td>
+                <td class="keys incognita" id="celda6" (click)="jugadaHumano(6)">-</td>
+                <td class="keys incognita" id="celda7" (click)="jugadaHumano(7)">-</td>
+                <td class="keys incognita" id="celda8" (click)="jugadaHumano(8)">-</td>
+                <td class="keys incognita" id="celda9" (click)="jugadaHumano(9)">-</td>
+            </tr>
+            <tr>
+                <td class="keys incognita" id="celda10" (click)="jugadaHumano(10)">-</td>
+                <td class="keys incognita" id="celda11" (click)="jugadaHumano(11)">-</td>
+                <td class="keys centro" id="celda12">-</td>
+                <td class="keys incognita" id="celda13" (click)="jugadaHumano(13)">-</td>
+                <td class="keys incognita" id="celda14" (click)="jugadaHumano(14)">-</td>
+            </tr>
+            <tr>
+                <td class="keys incognita" id="celda15" (click)="jugadaHumano(15)">-</td>
+                <td class="keys incognita" id="celda16" (click)="jugadaHumano(16)">-</td>
+                <td class="keys incognita" id="celda17" (click)="jugadaHumano(17)">-</td>
+                <td class="keys incognita" id="celda18" (click)="jugadaHumano(18)">-</td>
+                <td class="keys incognita" id="celda19" (click)="jugadaHumano(19)">-</td>
+            </tr>
+            <tr>
+                <td class="keys incognita" id="celda20" (click)="jugadaHumano(20)">-</td>
+                <td class="keys incognita" id="celda21" (click)="jugadaHumano(21)">-</td>
+                <td class="keys incognita" id="celda22" (click)="jugadaHumano(22)">-</td>
+                <td class="keys incognita" id="celda23" (click)="jugadaHumano(23)">-</td>
+                <td class="keys incognita" id="celda24" (click)="jugadaHumano(24)">-</td>
+            </tr>
+        </table>
+    </div>
+    <div class="container " *ngIf='iniciarJuego'>
+        <div class="transparente puntaje">
+            <p style="font-weight: bolder; color:whitesmoke; font-style: oblique; ">Puntaje: </p>
+            <p>Usted: {{nuevoJuego.puntajeJugador}} </p>
+            <p>PC: {{nuevoJuego.puntajePC}} </p>
+            <p class="mensaje">{{mensaje}}</p>
+        </div>
+    </div>
+    <div class="container botonera ">
+        <button id="button1 " (click)="nuevo() ">Nuevo Juego</button>
+        <button id="button1 " *ngIf='iniciarJuego' (click)="limpiarTablero() ">Limpiar Tablero</button>
+    </div>
+
+</div>

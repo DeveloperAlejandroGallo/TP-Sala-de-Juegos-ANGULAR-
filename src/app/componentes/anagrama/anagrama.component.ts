@@ -60,7 +60,7 @@ export class AnagramaComponent implements OnInit {
     // this.juegoActivo = false;
     this.tiempo = 100;
     this.mensaje = `FIN DE LA PARTIDA\nPUNTAJE: ${this.nuevoJuego.puntaje}`;
-    this.nuevoJuego.init();
+    this.nuevoJuego.inicializar();
   }
 
 }

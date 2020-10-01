@@ -1,5 +1,15 @@
 #titulo {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     font-size: 60px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    /* 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif */
+}
+
+h1 {
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 60px;
+}
+
+.fondo {
+    background-image: url('../../../assets/imagenes/FondoCabecera.png');
+    background-size: 100%;
 }
