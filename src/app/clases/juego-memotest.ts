@@ -5,7 +5,7 @@ import { Jugador } from './jugador';
 export class JuegoMemotest extends Juego {
 
     constructor(nombre?: string, gano?: boolean, jugador?: string) {
-        super('Memotest', gano, jugador);
+        super('Memotest', gano, sessionStorage.getItem('usuario'), 0);
         this.inicializar();
         this.llenarTablero();
        }
@@ -21,7 +21,8 @@ export class JuegoMemotest extends Juego {
     jugadasHumano: Array<string>;
     jugadasMaquina: Array<string>;
     tablero2: Array<{elem: string, descubierto: boolean}>;
-
+    ganador = true;
+    perdedor = false;
 
 
     inicializar() {
@@ -90,10 +91,11 @@ export class JuegoMemotest extends Juego {
         this.gano = false;
         if (this.jugadasHumano.length > this.jugadasMaquina.length) {
             this.mensaje = 'Ganaste!';
-            this.gano = true;
+            this.registrarJugada(this.ganador, this.puntajeJugador);
         } else {
             if (this.jugadasHumano.length < this.jugadasMaquina.length) {
                 this.mensaje = 'Perdiste!';
+                this.registrarJugada(this.perdedor, this.puntajeJugador);
             } else {
                 this.mensaje = 'Empate!';
             }

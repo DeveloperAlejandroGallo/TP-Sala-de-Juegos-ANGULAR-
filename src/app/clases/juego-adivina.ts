@@ -6,7 +6,7 @@ export class JuegoAdivina extends Juego
     numeroIngresado = 0;
 
     constructor(nombre?: string, gano?: boolean, jugador?: string) {
-        super('Adivina el n\u00FAmero', gano, jugador);
+        super('Adivina el n\u00FAmero', gano, sessionStorage.getItem('usuario'), 0);
       }
 
     public verificar() {
@@ -14,6 +14,7 @@ export class JuegoAdivina extends Juego
         if (this.numeroIngresado == this.numeroSecreto) {
           this.gano = true;
         }
+        this.registrarJugada(this.gano, this.gano ? 1 : 0);
         return this.gano;
      }
 

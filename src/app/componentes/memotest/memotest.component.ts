@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import { FirebaseService } from '../../servicios/firebase.service';
 import { JuegoMemotest } from '../../clases/juego-memotest';
 
 @Component({
@@ -8,7 +10,7 @@ import { JuegoMemotest } from '../../clases/juego-memotest';
 })
 export class MemotestComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fire: FirebaseService, private router: Router) { }
   nuevoJuego: JuegoMemotest;
   mensaje: string;
   iniciarJuego: boolean;
@@ -60,12 +62,16 @@ export class MemotestComponent implements OnInit {
                 this.mensaje = 'Su Turno';
               } else {
                 this.nuevoJuego.verificar();
+                this.nuevoJuego.registrarJugada(this.nuevoJuego.gano, 0);
+                this.fire.saveJuego(this.nuevoJuego);
                 this.mensaje = 'FIN DEL JUEGO\n' + this.nuevoJuego.mensaje;
               }
             }, 1200);
 
           } else {
             this.nuevoJuego.verificar();
+            this.nuevoJuego.registrarJugada(this.nuevoJuego.gano, 0);
+            this.fire.saveJuego(this.nuevoJuego);
             this.mensaje = 'FIN DEL JUEGO\n' + this.nuevoJuego.mensaje;
           }
         }
@@ -75,7 +81,6 @@ export class MemotestComponent implements OnInit {
     } else {
       this.mensaje = 'No posee jugadas restantes.';
     }
-    
     console.table(this.nuevoJuego.tablero2);
   }
 

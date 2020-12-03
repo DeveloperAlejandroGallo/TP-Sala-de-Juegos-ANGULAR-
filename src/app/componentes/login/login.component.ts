@@ -3,6 +3,9 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import {Subscription} from "rxjs";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
+import { Usuario } from '../../clases/usuario';
+import { AuthenticationService } from '../../servicios/authentication.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +14,7 @@ import {TimerObservable} from "rxjs/observable/TimerObservable";
 export class LoginComponent implements OnInit {
 
   private subscription: Subscription;
-  usuario = '';
+  usuario = new Usuario;
   clave= '';
   progreso: number;
   progresoMensaje="esperando..."; 
@@ -21,21 +24,42 @@ export class LoginComponent implements OnInit {
   clase="progress-bar progress-bar-info progress-bar-striped ";
 
   constructor(
+    private fireAuth: AuthenticationService,
     private route: ActivatedRoute,
     private router: Router) {
       this.progreso=0;
       this.ProgresoDeAncho="0%";
-
   }
 
   ngOnInit() {
   }
 
   Entrar() {
-    if (this.usuario === 'admin' && this.clave === 'admin') {
+    if (this.usuario.email === 'admin@admin.com' && this.clave === 'adminadmin') {
       this.router.navigate(['/Principal']);
+    } else {
+      this.onLogin();
     }
   }
+
+  async onLogin(): Promise<void> {
+    try {
+      const logging = await this.fireAuth.login(this.usuario);
+      if (logging) {
+        sessionStorage.setItem("usuario", JSON.stringify(this.usuario.email));
+        this.fireAuth.redirect('Principal');
+      } else {
+        this.fireAuth.redirect('Error');
+      }
+    } catch (error) {
+      if (error.code === 'auth/user-not-found') {
+        this.fireAuth.redirect('Registro');
+      }
+      console.log('Error al intentar loguearse', error);
+    }
+  }
+
+
   MoverBarraDeProgreso() {
     
     this.logeando=false;

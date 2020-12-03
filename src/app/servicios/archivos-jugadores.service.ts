@@ -11,7 +11,7 @@ export class ArchivosJugadoresService {
   }
 
 
-  public   traerJugadores(ruta) {
+  public traerJugadores(ruta) {
     return this.miHttp.httpGetO(this.api+ruta)
     .toPromise()
     .then( data => {

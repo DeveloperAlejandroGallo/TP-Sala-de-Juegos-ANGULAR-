@@ -4,8 +4,8 @@ import { Jugador } from './jugador';
 
 export class JuegoTateti extends Juego {
 // tslint:disable-next-line: curly
-    constructor(nombre?: string, gano?: boolean, jugador?: string) {
-        super('Ta Te Ti', gano, jugador);
+    constructor(nombre?: string, gano?: boolean, jugador?: string, intentos?: number) {
+        super('Ta Te Ti', gano, sessionStorage.getItem('usuario'), 0);
       }
 
       // 0 es no asignado, 1 jugador humano, 2 jugador maquina
@@ -18,6 +18,8 @@ export class JuegoTateti extends Juego {
     mensaje: string;
     puntajePC = 0;
     puntajeJugador = 0;
+    ganador = true;
+    perdedor = false;
 
     jugadaMaquina(): [number, number]
     {
@@ -56,9 +58,10 @@ export class JuegoTateti extends Juego {
                 console.log('sale true');
                 ret = true;
                 if (jugador === this.HUMANO) {
-                    this.gano = true;
+                    this.registrarJugada(this.ganador, 1);
+                    
                 } else {
-                    this.gano = false;
+                    this.registrarJugada(this.perdedor, 0);
                 }
             }
 

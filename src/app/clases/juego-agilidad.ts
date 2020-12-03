@@ -11,12 +11,13 @@ export class JuegoAgilidad extends Juego {
   
   constructor(nombre?: string, gano?: boolean, jugador?: string)
   {
-    super('Agilidad', gano, jugador);
+    super('Agilidad', gano, sessionStorage.getItem('usuario'), 0);
   }
 
   public verificar() {
 
     this.gano = this.respuesta == this.numeroIngresado;
+    this.registrarJugada(this.gano, 1);
     return this.gano;
 
     }

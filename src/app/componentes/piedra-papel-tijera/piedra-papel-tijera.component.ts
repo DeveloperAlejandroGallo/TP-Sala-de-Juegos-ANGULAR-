@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import { FirebaseService } from '../../servicios/firebase.service';
 import { JuegoPiedraPapelTijera } from '../../clases/juego-piedra-papel-tijera';
 
 @Component({
@@ -11,7 +13,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
   nuevoJuego: JuegoPiedraPapelTijera;
   iniciarJuego: boolean;
 
-  constructor() {
+  constructor(private fire: FirebaseService, private router: Router) {
     this.iniciarJuego = false;
     this.nuevoJuego = new JuegoPiedraPapelTijera();
    }

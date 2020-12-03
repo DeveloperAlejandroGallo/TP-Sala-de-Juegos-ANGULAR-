@@ -30,10 +30,10 @@
 
       <div class="container">
         <label><b>Usuario</b></label>
-        <input type="text" placeholder="Usuario"  [(ngModel)]="usuario"  name="uname" required>
+        <input type="text" placeholder="Usuario"  [(ngModel)]="usuario.email"  name="uname" required>
 
         <label><b>Clave</b></label>
-        <input type="password" placeholder="Clave"  [(ngModel)]="clave" name="psw" required>
+        <input type="password" placeholder="Clave"  [(ngModel)]="usuario.password" name="psw" required>
             
         <button *ngIf="logeando"  (click)="MoverBarraDeProgreso()" >Ingresar</button>
        
@@ -47,7 +47,7 @@
       </div>
 
       <div class="container" style="background-color:#f1f1f1">
-        <button type="button" class="cancelbtn">Cancelar</button>
+        <button type="button" class="cancelbtn" routerLink="/Principal">Cancelar</button>
         <button type="button" class="aceptbtn" routerLink="/Registro" >Registrarse</button>
         <span class="psw">Te olvidaste <a href="#">la clave?</a></span>
       </div>

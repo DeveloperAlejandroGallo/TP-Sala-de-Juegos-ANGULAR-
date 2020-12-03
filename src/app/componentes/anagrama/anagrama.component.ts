@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import { FirebaseService } from '../../servicios/firebase.service';
 import { JuegoAnagrama } from '../../clases/juego-anagrama';
 
 @Component({
@@ -15,7 +17,7 @@ export class AnagramaComponent implements OnInit {
   esperando = false;
   mensaje: string;
 
-  constructor() { }
+  constructor(private fire: FirebaseService, private router: Router) { }
 
   ngOnInit() {
     this.juegoActivo = false;
@@ -43,12 +45,15 @@ export class AnagramaComponent implements OnInit {
     console.log(`anagrama: ${this.nuevoJuego.anagrama} es ${this.nuevoJuego.respuestaCorrecta} puso ${this.nuevoJuego.respuestaUsr}` );
     this.esperando = true;
     this.nuevoJuego.verificar();
+
     if (this.nuevoJuego.gano)
     {
       this.mensaje = "Excelente!"
     } else {
       this.mensaje = 'Vuelva a intentarlo';
     }
+    this.nuevoJuego.registrarJugada(this.nuevoJuego.gano, 0);
+    this.fire.saveJuego(this.nuevoJuego);
   }
 
   proximaPalabra(){

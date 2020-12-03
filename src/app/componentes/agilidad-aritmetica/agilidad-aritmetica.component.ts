@@ -2,7 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { JuegoAgilidad } from '../../clases/juego-agilidad';
 
 import { Subscription } from 'rxjs';
-import { TimerObservable } from 'rxjs/observable/TimerObservable';
+import {Router} from "@angular/router";
+import { FirebaseService } from'../../servicios/firebase.service';
+
 @Component({
   selector: 'app-agilidad-aritmetica',
   templateUrl: './agilidad-aritmetica.component.html',
@@ -21,7 +23,7 @@ export class AgilidadAritmeticaComponent implements OnInit {
   esperando = true;
 
   ngOnInit() {}
-  constructor() {
+  constructor(private fire: FirebaseService, private router: Router) {
     this.ocultarVerificar = true;
     this.Tiempo = 10;
     this.nuevoJuego = new JuegoAgilidad();
@@ -39,6 +41,8 @@ export class AgilidadAritmeticaComponent implements OnInit {
       if (this.Tiempo === 0) {
         clearInterval(this.repetidor);
         this.verificar();
+        this.nuevoJuego.registrarJugada(this.nuevoJuego.gano, 0);
+        this.fire.saveJuego(this.nuevoJuego);
         this.ocultarVerificar = true;
         this.Tiempo = 10;
         }
@@ -48,6 +52,7 @@ export class AgilidadAritmeticaComponent implements OnInit {
   verificar() {
     this.esperando = true;
     this.nuevoJuego.verificar();
+    this.fire.saveJuego(this.nuevoJuego);
     if (this.nuevoJuego.gano)
     {
       clearInterval(this.repetidor);

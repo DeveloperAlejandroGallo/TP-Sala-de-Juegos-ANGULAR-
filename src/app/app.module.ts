@@ -58,6 +58,9 @@ import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/pi
 import { TatetiComponent } from './componentes/tateti/tateti.component';
 import { MemotestComponent } from './componentes/memotest/memotest.component';
 import { AhorcadoComponent } from './componentes/ahorcado/ahorcado.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // Material
 
@@ -100,7 +103,9 @@ import { AhorcadoComponent } from './componentes/ahorcado/ahorcado.component';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB6f8x4IjRlesQ3oETc6BXYQHVRTOlY3Ys'
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
     // NgbModule.forRoot(MiRuteo),
     // importo el ruteo
     // RouterModule.forRoot(MiRuteo)

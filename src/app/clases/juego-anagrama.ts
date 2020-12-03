@@ -3,7 +3,7 @@ import { Juego } from './juego';
 export class JuegoAnagrama extends Juego {
 
     constructor(nombre?: string, gano?: boolean, jugador?: string) {
-        super('Anagrama', gano, jugador);
+        super('Anagrama', gano, sessionStorage.getItem('usuario'), 0);
         this.puntaje = 0;
         this.llenarTabla();
       }
@@ -29,6 +29,7 @@ export class JuegoAnagrama extends Juego {
         } else {
             this.gano = false;
         }
+        this.registrarJugada(this.gano, this.puntaje);
         return this.gano;
     }
 

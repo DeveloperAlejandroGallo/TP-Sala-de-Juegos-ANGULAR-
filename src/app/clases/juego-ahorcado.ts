@@ -5,7 +5,7 @@ import { Juego } from './juego';
 export class JuegoAhorcado extends Juego {
     
     constructor(nombre?: string, gano?: boolean, jugador?: string) {
-        super('Ahorcado', gano, jugador);
+        super('Ahorcado', gano, sessionStorage.getItem('usuario'), 0);
         this.llenarDiccionario();
         console.log(`dicc 2: ${this.diccionario}`);
         this.obtenerPalabraAlAzar();
@@ -62,15 +62,17 @@ export class JuegoAhorcado extends Juego {
 
     public verificar(): boolean {
         this.gano = true;
+        this.puntajeJugador++;
         console.log('B: ' + this.palabraBuscada + '- M: ' + this.palabraMostradaString());
         for (let i = 0; i < this.palabraBuscada.length; i++)
         {
             if (this.palabraBuscada[i] !== this.palabraConGuiones[i]) {
                 this.gano = false;
+                this.puntajeJugador--;
                 break;
             }
         }
-
+        this.registrarJugada(this.gano, this.puntajeJugador);
         return this.gano;
     }
 

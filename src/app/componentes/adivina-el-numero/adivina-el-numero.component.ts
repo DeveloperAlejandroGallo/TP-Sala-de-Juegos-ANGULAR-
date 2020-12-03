@@ -1,5 +1,7 @@
 
 import { Component, OnInit , Input, Output, EventEmitter} from '@angular/core';
+import {Router} from "@angular/router";
+import { FirebaseService } from '../../servicios/firebase.service'; 
 import { JuegoAdivina } from '../../clases/juego-adivina';
 
 @Component({
@@ -15,7 +17,7 @@ export class AdivinaElNumeroComponent implements OnInit {
   contador: number;
   ocultarVerificar: boolean;
 
-  constructor() {
+  constructor(private fire: FirebaseService, private router: Router) {
     this.nuevoJuego = new JuegoAdivina();
     console.info('numero Secreto:', this.nuevoJuego.numeroSecreto);
     this.ocultarVerificar = false;
@@ -33,7 +35,7 @@ export class AdivinaElNumeroComponent implements OnInit {
     console.info('Verificar resultado: ', this.nuevoJuego.verificar());
     if (this.nuevoJuego.verificar())
     {
-
+      this.fire.saveJuego(this.nuevoJuego);
       this.enviarJuego.emit(this.nuevoJuego);
       this.MostarMensaje('Sos un Genio!!!', true);
       this.nuevoJuego.numeroSecreto = 0;

@@ -14,19 +14,19 @@
     <form class="modal-content animate" >
       <div class="container">
         <label><b>Email</b></label>
-        <input type="text" placeholder="Ingresa tu correo" name="email" required>
+        <input type="text" placeholder="Ingresa tu correo" [(ngModel)]="usuario.email"  name="email" required>
   
         <label><b>Clave</b></label>
-        <input type="password" placeholder="Aca la clave" name="psw" required>
+        <input type="password" placeholder="Aca la clave" [(ngModel)]="usuario.password" name="psw" required>
   
         <label><b>Repita la clave</b></label>
         <input type="password" placeholder="Aca repeti la misa clave  de arriba" name="psw-repeat" required>
         <input type="checkbox" checked="checked">Recordar mis datos
         <p>creando la cuenta aceptando los<a  onclick="document.getElementById('id01').style.display='none'"  >Terminos y condiciones</a>.</p>
-  
+        <div><p>{{mensaje}}</p></div>
         <div class="clearfix">
           <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Me arrepenti</button>
-          <button type="submit" class="signupbtn">Registrarme</button>
+          <button type="submit" class="signupbtn" (click)='createUserFireBase()'>Registrarme</button>
         </div>
       </div>
     </form>

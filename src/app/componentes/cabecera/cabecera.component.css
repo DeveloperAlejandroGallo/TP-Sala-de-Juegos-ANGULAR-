@@ -80,4 +80,11 @@
     font-size: 20px;
     background-color: rgb(0, 0, 0);
     color: whitesmoke;
+    width: fit-content;
+}
+
+.registroingreso {
+    font-size: large;
+    background-color: darkblue;
+    width: fit-content;
 }

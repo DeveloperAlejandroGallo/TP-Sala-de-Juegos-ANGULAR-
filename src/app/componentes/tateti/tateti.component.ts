@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+// import { Router } from 'express';
+import {Router} from "@angular/router";
+import { FirebaseService } from '../../servicios/firebase.service';
 import { JuegoTateti } from '../../clases/juego-tateti';
 
 @Component({
@@ -15,7 +18,8 @@ export class TatetiComponent implements OnInit {
   mensaje: string;
   eleccionHumano: string;
 
-  constructor() {
+  constructor(private fire: FirebaseService, private router: Router) {
+    
     this.iniciarJuego = false;
     this.nuevoJuego = new JuegoTateti();
    }
