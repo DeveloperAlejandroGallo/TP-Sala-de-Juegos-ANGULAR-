@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AdivinaElNumeroComponent } from './componentes/adivina-el-numero/adivina-el-numero.component';
 import { ListadoDeResultadosComponent } from './componentes/listado-de-resultados/listado-de-resultados.component';
@@ -61,7 +61,11 @@ import { AhorcadoComponent } from './componentes/ahorcado/ahorcado.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
+import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
+import { SubirImagenComponent } from './componentes/subir-imagen/subir-imagen.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthenticationService } from './servicios/authentication.service';
+import { StorageFirebaseService } from './servicios/storage-firebase.service';
 // Material
 
 
@@ -93,24 +97,29 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     PiedraPapelTijeraComponent,
     TatetiComponent,
     MemotestComponent,
-    AhorcadoComponent
+    AhorcadoComponent,
+    NavBarComponent,
+    SubirImagenComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RuteandoModule,
     HttpModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB6f8x4IjRlesQ3oETc6BXYQHVRTOlY3Ys'
     }),
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    HttpClientModule
     // NgbModule.forRoot(MiRuteo),
     // importo el ruteo
     // RouterModule.forRoot(MiRuteo)
   ],
-  providers: [ JuegoServiceService, MiHttpService, PaisesService, ArchivosJugadoresService, JugadoresService],
+  providers: [ JuegoServiceService, MiHttpService, PaisesService, ArchivosJugadoresService, 
+    JugadoresService, AuthenticationService, StorageFirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

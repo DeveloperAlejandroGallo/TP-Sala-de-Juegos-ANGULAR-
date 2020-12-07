@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  firebaseConfig: {
+  firebase: {
     apiKey: 'AIzaSyCDtOud-RCOLEiscQyu0-xdG6fOuFbc7VQ',
     authDomain: 'tp-sala-de-juegos-aleg.firebaseapp.com',
     databaseURL: 'https://tp-sala-de-juegos-aleg.firebaseio.com',

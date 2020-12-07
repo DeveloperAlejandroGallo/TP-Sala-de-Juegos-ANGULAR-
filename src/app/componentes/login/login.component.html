@@ -1,27 +1,58 @@
-<!--div style="margin: 20% auto; width: 30%;">
-  <div class="row">
-    <div class="col-lg-6">
-      Usuario
+<div class="card">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="../../../assets/imagenes/login.jpg" class="card-img" alt="login">
     </div>
-    <div class="col-lg-6">
-      <input type="text"  [(ngModel)]="usuario">
+    <div class="col-md-8">
+      <div class="card text-center">
+        <div class="card-body">
+          <div class="card-header text-white bg-success">Login</div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="email">email</span>
+            </div>
+            <input type="email" class="form-control" [(ngModel)]="email" placeholder="Ingrese su email"
+              aria-label="Usuario" aria-describedby="email">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="clave">Clave</span>
+            </div>
+            <input type="password" class="form-control" [(ngModel)]="clave" placeholder="Ingrese su clave"
+              aria-label="Clave" aria-describedby="clave" (keydown.enter)="save($event)">
+          </div>
+          <!-- <button type="button" class="btn btn-outline-primary" (click)="btnLogin()" shape="round" size="medium">Ingresar</button> -->
+          <button *ngIf="logeando" type="button" class="btn btn-outline-success" (click)="MoverBarraDeProgreso()">Ingresar</button>
+          <button type="button" class="btn btn-outline-warning" routerLink="/Registro" shape="round" size="medium">Registrarse</button>
+          <div *ngIf="!logeando" class="progress">
+            <div class="progress-bar progress-bar-info progress-bar-striped active" [class]="clase" role="progressbar"
+              aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="ProgresoDeAncho">
+              {{progresoMensaje}} - {{progreso}}%
+            </div>
+          </div>
+          <hr>
+          <div>
+            <button type="button" class="btn btn-outline-primary" (click)="loguearUsuario('admin')" shape="round"
+              size="medium">Admin</button>
+            <button type="button" class="btn btn-outline-primary" (click)="loguearUsuario('jugador1')" shape="round"
+              size="medium">Jugador1</button>
+            <button type="button" class="btn btn-outline-primary" (click)="loguearUsuario('jugador2')" shape="round"
+              size="medium">Jugador2</button>
+            <button type="button" class="btn btn-outline-primary" (click)="loguearUsuario('jugador3')" shape="round"
+              size="medium">Jugador3</button>
+            <button type="button" class="btn btn-outline-primary" (click)="loguearUsuario('jugador4')" shape="round"
+              size="medium">Jugador4</button>
+            <button type="button" class="btn btn-outline-primary" (click)="loguearUsuario('jugador5')" shape="round"
+              size="medium">Jugador5</button>
+            <button type="button" class="btn btn-outline-primary" (click)="loguearUsuario('jugador6')" shape="round"
+              size="medium">Jugador6</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row" style="margin-top: 5px">
-    <div class="col-lg-6">
-      Clave
-    </div>
-    <div class="col-lg-6">
-      <input type="password" [(ngModel)]="clave">
-    </div>
-  </div>
-  <div class="row" style="text-align: center; margin-top: 10px">
-    <div class="col-lg-12">
-      <button (click)="Entrar()" class="btn btn-info btn-lg" >Entrar</button>
-    </div>
-  </div>
-</div-->
- <div class="container" >
+</div>
+<!-- <div class="container" >
   <div class="jumbotron" style="padding:50px;">
     <form action="return true;">
       <div class="imgcontainer">
@@ -54,4 +85,4 @@
      
     </form>
   </div>
-</div>
+</div> -->

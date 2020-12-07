@@ -30,9 +30,9 @@ import { AhorcadoComponent } from '../componentes/ahorcado/ahorcado.component';
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
-{path: 'Jugadores' , component: JugadoresListadoComponent},
-{path: '' , component: PrincipalComponent},
-{path: 'Login' , component: LoginComponent},
+  { path: '', component: LoginComponent },
+  { path: 'Login', component: LoginComponent },
+  { path: 'Jugadores', component: JugadoresListadoComponent },
 {path: 'Mapa' , component: MapaDeGoogleComponent},
 {path: 'QuienSoy' , component: QuienSoyComponent},
 {path: 'Registro' , component: RegistroComponent},
@@ -40,7 +40,8 @@ const MiRuteo = [
 {path: 'Listado' , component: ListadoComponent},
 {path: 'Paises' , component: ListadoDePaisesComponent},
 
-{ path: 'Juegos' ,
+  {
+    path: 'Juegos',
 component: JuegosComponent ,
 children:
      [{path: '' , component: MenuCardComponent},

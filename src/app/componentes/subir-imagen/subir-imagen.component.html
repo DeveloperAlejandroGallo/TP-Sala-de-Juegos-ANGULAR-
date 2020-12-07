@@ -1,0 +1,13 @@
+<div class="contenedor">
+    <div class="contenedor_formulario">
+      <form [formGroup]="archivoForm">
+        <div class="file has-name is-boxed">
+          <img *ngIf="imgURL" [src]="imgURL" alt="" style="height: 80px; width: 80px; display: block;">
+          <label class="file-label">
+            <input class="file-input" type="file" #file formControlName="archivo" (change)="preview(file.files)"
+              (change)="cambioArchivo($event)">
+          </label>
+        </div>
+      </form>
+    </div>
+  </div>

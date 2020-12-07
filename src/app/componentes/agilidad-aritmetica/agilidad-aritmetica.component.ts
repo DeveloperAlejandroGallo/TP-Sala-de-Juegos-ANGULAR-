@@ -4,6 +4,7 @@ import { JuegoAgilidad } from '../../clases/juego-agilidad';
 import { Subscription } from 'rxjs';
 import {Router} from "@angular/router";
 import { FirebaseService } from'../../servicios/firebase.service';
+import { JuegosService } from '../../servicios/juegos.service';
 
 @Component({
   selector: 'app-agilidad-aritmetica',
@@ -23,7 +24,9 @@ export class AgilidadAritmeticaComponent implements OnInit {
   esperando = true;
 
   ngOnInit() {}
-  constructor(private fire: FirebaseService, private router: Router) {
+  constructor(private fire: FirebaseService, 
+              private router: Router,
+              private juegoServ: JuegosService) {
     this.ocultarVerificar = true;
     this.Tiempo = 10;
     this.nuevoJuego = new JuegoAgilidad();
@@ -42,7 +45,8 @@ export class AgilidadAritmeticaComponent implements OnInit {
         clearInterval(this.repetidor);
         this.verificar();
         this.nuevoJuego.registrarJugada(this.nuevoJuego.gano, 0);
-        this.fire.saveJuego(this.nuevoJuego);
+        // this.fire.saveJuego(this.nuevoJuego);
+        this.juegoServ.crearJuego(this.nuevoJuego);
         this.ocultarVerificar = true;
         this.Tiempo = 10;
         }
@@ -52,7 +56,8 @@ export class AgilidadAritmeticaComponent implements OnInit {
   verificar() {
     this.esperando = true;
     this.nuevoJuego.verificar();
-    this.fire.saveJuego(this.nuevoJuego);
+    // this.fire.saveJuego(this.nuevoJuego);
+    this.juegoServ.crearJuego(this.nuevoJuego);
     if (this.nuevoJuego.gano)
     {
       clearInterval(this.repetidor);

@@ -4,6 +4,7 @@ import {AngularFireAuth} from "@angular/fire/auth";
 import { Usuario } from '../clases/usuario';
 import { FirebaseService } from './firebase.service';
 import { Jugador } from '../clases/jugador';
+import { JugadoresService } from './jugadores.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,11 @@ import { Jugador } from '../clases/jugador';
 export class AuthenticationService {
 
   jugador: Jugador;
+  estaLogueado: boolean;
 
   constructor(private fireAuth: AngularFireAuth, 
-              private fireCloud: FirebaseService,
+              // private fireCloud: FirebaseService,
+              private jugadorService: JugadoresService,
               private router: Router) { }
 
   async login(usuario: Usuario): Promise<any> {
@@ -27,9 +30,10 @@ export class AuthenticationService {
     try {
       const {user} = await this.fireAuth.createUserWithEmailAndPassword(usuario.email, usuario.password);
       await this.verificationEmailFirebase();
-      this.jugador = new Jugador('','',usuario.email,'','');
-      this.fireCloud.saveJugadores(this.jugador);
-      console.info(`Usuario creado ${usuario.email}`);
+      // this.jugador = new Jugador('','',usuario.email,'','');
+      // // this.fireCloud.saveJugadores(this.jugador);
+      // this.jugadorService.crearJugador(this.jugador);
+      // console.info(`Usuario creado ${usuario.email}`);
       return user;
     } catch (error) {
       console.error("Error al registrarse en Firebase", error);
@@ -59,6 +63,20 @@ export class AuthenticationService {
 
   public redirect(router: string): void {
     this.router.navigate([router]);
+  }
+
+  public currentUser() {
+    return this.fireAuth.currentUser;
+ 
+  }
+
+  public logueado() {
+    return this.fireAuth.currentUser.then(resp => {
+      if (resp)
+        return true;
+      else
+        return false;
+    });
   }
 
 

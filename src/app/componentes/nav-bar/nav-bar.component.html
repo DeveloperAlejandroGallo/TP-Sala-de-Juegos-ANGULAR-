@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #addaff;">
+    <a class="navbar-brand" [routerLink]="['/home']" *ngIf="usuario">
+        <img [src]="usuario.foto" width="40" height="40" class="d-inline-block align-top" alt="Home">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown" *ngIf="usuarioActivo">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/home']">{{'Usuario: ' + usuarioActivo.email}}<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <!-- <a class="nav-link" [routerLink]="['/MiPerfil']">Menu</a> -->
+                <!-- <label for=""></label> -->
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <!-- <button *ngIf="!(authService.auth.user | async)" class="btn btn-outline-success my-2 mr-sm-2"
+                routerLink="/Login">Ingresar</button>
+            <button *ngIf="!(authService.auth.user | async)" class="btn btn-outline-danger my-2 my-sm-0"
+                routerLink="/Registro">Registrarse</button>
+            <button *ngIf="(authService.auth.user | async)" class="btn btn-outline-success my-2 mr-sm-2"
+                routerLink="/MiPerfil">Mi Perfil</button> -->
+            <button *ngIf="(authService.auth.user | async)" class="btn btn-outline-danger my-2 my-sm-0"
+                (click)="cerrarSesion()">Salir</button>
+        </form>
+    </div>
+</nav>

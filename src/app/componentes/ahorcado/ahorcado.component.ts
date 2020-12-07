@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import { FirebaseService } from '../../servicios/firebase.service';
 import { JuegoAhorcado } from '../../clases/juego-ahorcado';
+import { JuegosService } from '../../servicios/juegos.service';
 
 @Component({
   selector: 'app-ahorcado',
@@ -10,7 +11,7 @@ import { JuegoAhorcado } from '../../clases/juego-ahorcado';
 })
 export class AhorcadoComponent implements OnInit {
 
-  constructor(private fire: FirebaseService, private router: Router) { }
+  constructor(private fire: FirebaseService, private router: Router,private juegoServ: JuegosService) { }
   juegoActivo: boolean = false;
   nuevoJuego: JuegoAhorcado;
   palabraPantalla: Array<string>;
@@ -40,11 +41,13 @@ export class AhorcadoComponent implements OnInit {
       this.mensaje = 'AH PERDIDO EL JUEGO...';
       this.nuevoJuego.gano = false;
       this.nuevoJuego.registrarJugada(false, 0);
-      this.fire.saveJuego(this.nuevoJuego);
+      // this.fire.saveJuego(this.nuevoJuego);
+      this.juegoServ.crearJuego(this.nuevoJuego);
     } else {
       if (this.nuevoJuego.verificar()) {
         this.nuevoJuego.registrarJugada(true, 1);
-        this.fire.saveJuego(this.nuevoJuego);
+        // this.fire.saveJuego(this.nuevoJuego);
+        this.juegoServ.crearJuego(this.nuevoJuego);
         this.mensaje = 'FELICITACIONES AH GANADO EL JUEGO!';
       }
     }

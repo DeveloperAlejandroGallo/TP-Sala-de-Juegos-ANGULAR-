@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import { FirebaseService } from '../../servicios/firebase.service';
 import { JuegoMemotest } from '../../clases/juego-memotest';
+import { JuegosService } from '../../servicios/juegos.service';
 
 @Component({
   selector: 'app-memotest',
@@ -10,7 +11,7 @@ import { JuegoMemotest } from '../../clases/juego-memotest';
 })
 export class MemotestComponent implements OnInit {
 
-  constructor(private fire: FirebaseService, private router: Router) { }
+  constructor(private fire: FirebaseService, private router: Router,private juegoServ: JuegosService) { }
   nuevoJuego: JuegoMemotest;
   mensaje: string;
   iniciarJuego: boolean;
@@ -63,7 +64,8 @@ export class MemotestComponent implements OnInit {
               } else {
                 this.nuevoJuego.verificar();
                 this.nuevoJuego.registrarJugada(this.nuevoJuego.gano, 0);
-                this.fire.saveJuego(this.nuevoJuego);
+                // this.fire.saveJuego(this.nuevoJuego);
+                this.juegoServ.crearJuego(this.nuevoJuego);
                 this.mensaje = 'FIN DEL JUEGO\n' + this.nuevoJuego.mensaje;
               }
             }, 1200);
@@ -71,7 +73,8 @@ export class MemotestComponent implements OnInit {
           } else {
             this.nuevoJuego.verificar();
             this.nuevoJuego.registrarJugada(this.nuevoJuego.gano, 0);
-            this.fire.saveJuego(this.nuevoJuego);
+            // this.fire.saveJuego(this.nuevoJuego);
+            this.juegoServ.crearJuego(this.nuevoJuego);
             this.mensaje = 'FIN DEL JUEGO\n' + this.nuevoJuego.mensaje;
           }
         }
