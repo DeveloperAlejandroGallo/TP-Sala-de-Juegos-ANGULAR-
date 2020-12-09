@@ -45,7 +45,7 @@ table {
 .mensaje {
     color: rgb(255, 255, 255);
     margin-top: 15px;
-    font-size: 30px;
+    font-size: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bolder;
 }
@@ -114,7 +114,7 @@ table {
 }
 
 button {
-    margin-top: 50px;
+    margin-top: 5px;
     color: white;
     background-color: black;
     font-weight: bold;

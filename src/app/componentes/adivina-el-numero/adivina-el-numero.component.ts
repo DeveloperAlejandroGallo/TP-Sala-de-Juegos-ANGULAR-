@@ -32,22 +32,24 @@ export class AdivinaElNumeroComponent implements OnInit {
   }
   verificar() {
     this.contador++;
+    this.nuevoJuego.intentos++;
     this.ocultarVerificar = true;
     console.info('Numero Secreto - Gano:', this.nuevoJuego.gano);
     
-    console.info('Verificar resultado: ', this.nuevoJuego.verificar());
+    // console.info('Verificar resultado: ', this.nuevoJuego.verificar());
     if (this.nuevoJuego.verificar())
     {
-      // this.fire.saveJuego(this.nuevoJuego);
+      this.fire.saveJuego(this.nuevoJuego);
       this.juegoServ.crearJuego(this.nuevoJuego);
       this.enviarJuego.emit(this.nuevoJuego);
-      this.MostarMensaje('Sos un Genio!!!', true);
+      this.MostarMensaje('Feicitaciones Adivinaste el Número!', true);
       this.nuevoJuego.numeroSecreto = 0;
+      this.nuevoJuego.intentos = 0;
 
     } else {
 
       let mensaje: string;
-      switch (this.contador) {
+      switch (this.nuevoJuego.intentos) {
         case 1:
           mensaje ='No, intento fallido, animo';
           break;
@@ -71,7 +73,7 @@ export class AdivinaElNumeroComponent implements OnInit {
             mensaje ='Ya le erraste '+ this.contador +' veces';
           break;
       }
-      this.MostarMensaje('#'+ this.contador +' '+ mensaje +' ayuda :'+ this.nuevoJuego.retornarAyuda());
+      this.MostarMensaje('#'+ this.contador +' '+ mensaje +' \nAyuda :'+ this.nuevoJuego.retornarAyuda());
 
 
     }
@@ -91,7 +93,7 @@ export class AdivinaElNumeroComponent implements OnInit {
     setTimeout(function() {
       x.className = x.className.replace('show', '');
       modelo.ocultarVerificar = false;
-     }, 3000);
+     }, 1500);
     console.info('objeto', x);
 
    }

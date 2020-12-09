@@ -12,7 +12,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="letras">
+            <div class="letras"  *ngIf="errores!=8 && !nuevoJuego.gano">
                 <div class="row">
                     <div class="col text-center">
                         <button *ngFor="let letra of nuevoJuego.letras" class="btn btn-primary" (click)='letraClick(letra)'> {{ letra }} </button>
@@ -20,14 +20,14 @@
                 </div>
             </div>
         </div>
-        <div class="mensaje">
+        <!-- <div class="mensaje">
             <div class="row">
                 <div class="col text-center">
                     {{mensaje}}
                 </div>
             </div>
-        </div>
-        <div class="container botonera ">
+        </div> -->
+        <div class="container center botonera ">
             <button id="button1 " (click)="nuevo() ">Nuevo Juego</button>
         </div>
     </div>

@@ -40,7 +40,7 @@ export class NavBarComponent implements OnInit {
     this.authService.logOut().then( resp =>{
       this.usuarioActivo=null;
       this.authService.estaLogueado = false;
-      this.router.navigate(['/login']);
+      this.router.navigate(['/Login']);
     });
   }
 

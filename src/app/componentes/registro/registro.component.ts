@@ -7,6 +7,7 @@ import { Usuario } from '../../clases/usuario';
 import Swal from "sweetalert2";
 import { Jugador } from '../../clases/jugador';
 import { JugadoresService } from '../../servicios/jugadores.service';
+import { FirebaseService } from '../../servicios/firebase.service';
 
 @Component({
   selector: 'app-registro',
@@ -19,7 +20,8 @@ export class RegistroComponent implements OnInit {
     private fireAuth: AuthenticationService,
     private fireStorage: StorageFirebaseService,
     private userService: UsuariosService,
-    private jugadorServ: JugadoresService) { }
+    private jugadorServ: JugadoresService,
+    private fireCloud: FirebaseService) { }
 
   public usuario: Usuario;
   public jugador: Jugador;
@@ -106,7 +108,7 @@ export class RegistroComponent implements OnInit {
           this.userService.createUser(this.usuario).subscribe((res: any) => {
 
             this.jugador =  new Jugador(this.nickname,this.nombre, this.email, this.publicURL, 'Jugador');
-
+            this.fireCloud.saveJugadores(this.jugador);
             this.jugadorServ.crearJugador(this.jugador).subscribe((res: any)=>{
               Swal.fire({
                 title: 'Registro exitoso',

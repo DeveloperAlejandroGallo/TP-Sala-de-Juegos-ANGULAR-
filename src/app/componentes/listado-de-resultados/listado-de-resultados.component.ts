@@ -1,5 +1,7 @@
 
 import { Component, OnInit , Input, EventEmitter} from '@angular/core';
+import { FirebaseService } from '../../servicios/firebase.service';
+import { Juego } from '../../clases/juego';
 
 @Component({
   selector: 'app-listado-de-resultados',
@@ -8,18 +10,27 @@ import { Component, OnInit , Input, EventEmitter} from '@angular/core';
 })
 export class ListadoDeResultadosComponent implements OnInit {
  @Input()
- listado: Array<any>;
+ listado: Array<Juego>;
 
+ listadoGeneral: Array<Juego>;
+ listadoGanadores : Array<Juego>;
+ listadoPerdedores : Array<Juego>;
+ misResultados : Array<Juego>;
 
-  constructor() {
+  constructor(private db : FirebaseService) {
+    // this.listarResultados();
    }
 
   ngOnInit() {
 
   }
 
-  ver() {
-    console.info(this.listado);
-  }
+  // listarResultados(){
+  //       this.db.getJuegos().subscribe(
+  //         (lista: Array<Juego>) => {
+  //              this.listadoGeneral = lista;
+  //         }
+  //       )}
+
 
 }

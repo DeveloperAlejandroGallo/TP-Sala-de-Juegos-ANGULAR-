@@ -2,29 +2,57 @@
     <div class="container">
         <div class="row">
             <div class="titulo">
-                <p>Piedra Papel o Tijeras</p>
+                <h1>{{nuevoJuego.nombre}}</h1>
             </div>
         </div>
     </div>
-    <div class="container" *ngIf='iniciarJuego'>
+    <div class="d-flex justify-content-center" >
+        <div class="card-deck text-center" *ngIf='iniciarJuego'>
+            <div class="card" >
+                <img src="../../../assets/imagenes/Piedra.png" class="card-img-top" alt="PIEDRA"(click)="choise_click(0)">
+                <div class="card-header">PIEDRA
+                </div>
+            </div>
+            <div class="card" >
+                <img src="../../../assets/imagenes/Papel.png" class="card-img-top" alt="PAPEL"
+                    (click)="choise_click(1)">
+                <div class="card-header">PAPEL
+                </div>
+            </div>
+            <div class="card" >
+                <img src="../../../assets/imagenes/Tijeras.png" class="card-img-top" alt="TIJERA"
+                    (click)="choise_click(2)">
+                <div class="card-header">TIJERA
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="container" *ngIf='iniciarJuego'>
         <div class="row">
             <div class="col-md-4">
-                <button (click)="choise_click(0)"><img src="../../../assets/imagenes/Piedra.png"></button>
+                
+                <button (click)="choise_click(0)" id="piedra"><img src="../../../assets/imagenes/Piedra.png">--PIEDRA--</button>
             </div>
             <div class="col-md-4">
-                <button (click)="choise_click(1)"><img src="../../../assets/imagenes/Papel.png"></button>
+                <button (click)="choise_click(1)"><img src="../../../assets/imagenes/Papel.png">--PAPEL--</button>
             </div>
             <div class="col-md-4">
-                <button (click)="choise_click(2)"><img src="../../../assets/imagenes/Tijeras.png"></button>
+                <button (click)="choise_click(2)"><img src="../../../assets/imagenes/Tijeras.png">--TIJERA--</button>
             </div>
         </div>
+    </div> -->
+    <div class="row" *ngIf="jugado">
+
     </div>
-    <div class="container" *ngIf='iniciarJuego'>
+    <div class="container" *ngIf='jugado'>
         <div class="transparente">
-            <p id="puntaje">Puntaje: PC: {{nuevoJuego.puntajePC}} - Usted: {{nuevoJuego.puntajeJugador}} </p>
+            <p id="puntaje">Jugaste: {{nuevoJuego.options[this.nuevoJuego.playerOption]}}</p><br>
+            <p id="puntaje">PC Jugó: {{nuevoJuego.options[this.nuevoJuego.optionPC]}}</p><br>
+            <p id="puntaje">Resultado: {{nuevoJuego.mensaje}}</p>
         </div>
     </div>
     <div class="container">
         <button id="button1" (click)="nuevo()">Nuevo Juego</button>
+        <!-- <button *ngIf="iniciarJuego" id="button1" (click)="fin()">Finalizar</button> -->
     </div>
 </div>

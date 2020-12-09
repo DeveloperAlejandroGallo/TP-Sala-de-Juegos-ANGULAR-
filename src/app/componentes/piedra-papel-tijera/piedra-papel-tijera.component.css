@@ -1,6 +1,13 @@
+label {
+    font-weight: bolder;
+    font-size: large;
+    background-color: white;
+    text-align: center;
+}
 img {
     width: 200px;
     height: 100px;
+    align-items: center;
 }
 
 button {
@@ -19,6 +26,7 @@ button {
     font-weight: bolder;
     margin-top: 50px;
     margin: auto;
+    background-color: rgba(255, 255, 255, 0.685);
 }
 
 .texto {
@@ -29,17 +37,18 @@ button {
 
 #puntaje {
     font-size: 30px;
-    color: rgb(10, 12, 156);
+    color: rgb(255, 255, 255);
     text-align: center;
     margin: 0
 }
 
 .transparente {
-    background-color: rgba(8, 22, 36, 0.5);
-    width: 500px;
-    margin-top: 100px;
-    height: 10em;
-    display: flex;
+    background-color: rgba(8, 22, 36, 0.836);
+    margin-top: 50px;
+    padding: 5px;
+    /* width: 500px;
+    height: 10em; 
+    display: flex; */
     align-items: center;
     justify-content: center
 }
@@ -70,4 +79,8 @@ button {
 
 #button1:hover {
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+col {
+    text-align: center;
 }

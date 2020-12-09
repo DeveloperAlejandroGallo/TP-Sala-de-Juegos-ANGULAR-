@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { error } from 'console';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';//'src/environments/environment';
 import { Juego } from '../clases/juego';
+import { JuegoAgilidad } from '../clases/juego-agilidad';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +22,12 @@ export class JuegosService {
   public crearJuego(juego: any){
     return this.http.post(environment.firebase.databaseURL+"/juegos.json",juego);
  }
+
+ public crearJuegoAgilidad(juego: JuegoAgilidad){
+   console.log('En el serv a guardar');
+  return this.http.post(environment.firebase.databaseURL+"/juegos.json",juego).catch(err=> { throw 'error_ '+err;  } );
+}
+
 
  obtenerJuegos(){
    this.juegoList= this.fireDB.object('juegos').valueChanges().pipe(map(datos=>{return this.objecToArray(datos)}));

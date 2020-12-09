@@ -3,6 +3,9 @@ import {Router} from "@angular/router";
 import { FirebaseService } from '../../servicios/firebase.service';
 import { JuegoMemotest } from '../../clases/juego-memotest';
 import { JuegosService } from '../../servicios/juegos.service';
+import { JugadoresService } from '../../servicios/jugadores.service';
+import { AuthenticationService } from '../../servicios/authentication.service';
+import { Jugador } from '../../clases/jugador';
 
 @Component({
   selector: 'app-memotest',
@@ -11,7 +14,10 @@ import { JuegosService } from '../../servicios/juegos.service';
 })
 export class MemotestComponent implements OnInit {
 
-  constructor(private fire: FirebaseService, private router: Router,private juegoServ: JuegosService) { }
+  constructor(private fire: FirebaseService, private router: Router,private juegoServ: JuegosService,
+            private jugadorServ: JugadoresService,
+            public authService: AuthenticationService) { }
+
   nuevoJuego: JuegoMemotest;
   mensaje: string;
   iniciarJuego: boolean;
@@ -20,10 +26,12 @@ export class MemotestComponent implements OnInit {
   segundaEleccion: number;
   HUMANO = 1;
   MAQUINA = 2;
+  jugador: Jugador;
+  usuario;
 
 
   ngOnInit(): void {
-
+    this.obtenetJugador();
   }
 
   nuevo() {
@@ -63,8 +71,8 @@ export class MemotestComponent implements OnInit {
                 this.mensaje = 'Su Turno';
               } else {
                 this.nuevoJuego.verificar();
-                this.nuevoJuego.registrarJugada(this.nuevoJuego.gano, 0);
-                // this.fire.saveJuego(this.nuevoJuego);
+                this.nuevoJuego.registrarJugada(this.nuevoJuego.gano, this.nuevoJuego.puntajeJugador);
+                this.fire.saveJuego(this.nuevoJuego);
                 this.juegoServ.crearJuego(this.nuevoJuego);
                 this.mensaje = 'FIN DEL JUEGO\n' + this.nuevoJuego.mensaje;
               }
@@ -72,8 +80,8 @@ export class MemotestComponent implements OnInit {
 
           } else {
             this.nuevoJuego.verificar();
-            this.nuevoJuego.registrarJugada(this.nuevoJuego.gano, 0);
-            // this.fire.saveJuego(this.nuevoJuego);
+            this.nuevoJuego.registrarJugada(this.nuevoJuego.gano, this.nuevoJuego.puntajeJugador);
+            this.fire.saveJuego(this.nuevoJuego);
             this.juegoServ.crearJuego(this.nuevoJuego);
             this.mensaje = 'FIN DEL JUEGO\n' + this.nuevoJuego.mensaje;
           }
@@ -138,5 +146,20 @@ export class MemotestComponent implements OnInit {
       }
     }
   }
+
+  public obtenetJugador() {
+    this.authService.currentUser().then(resp=>{
+      this.usuario=resp;
+      console.log('usuarioActivo ' + this.usuario.email);
+    
+      this.jugadorServ.getJugadorPorEmail(this.usuario.email).subscribe(ret => {
+        this.jugador = ret;
+        console.log('Usr: ');
+        console.table(this.jugador);
+      });
+    });
+  }
+
+
 
 }

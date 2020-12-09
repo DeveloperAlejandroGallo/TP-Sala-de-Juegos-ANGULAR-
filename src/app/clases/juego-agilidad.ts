@@ -8,16 +8,17 @@ export class JuegoAgilidad extends Juego {
   respuesta = 0;
   numeroIngresado = 0;
 
+
   
   constructor(nombre?: string, gano?: boolean, jugador?: string)
   {
-    super('Agilidad', gano, sessionStorage.getItem('usuario'), 0);
+    super('Agilidad Aritmetica', gano, sessionStorage.getItem('usuario').replace('""','"'), 0);
   }
 
   public verificar() {
 
     this.gano = this.respuesta == this.numeroIngresado;
-    this.registrarJugada(this.gano, 1);
+    this.registrarJugada(this.gano, this.gano ? 1 : 0);
     return this.gano;
 
     }

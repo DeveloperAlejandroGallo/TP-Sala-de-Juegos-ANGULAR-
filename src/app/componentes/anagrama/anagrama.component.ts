@@ -55,7 +55,7 @@ export class AnagramaComponent implements OnInit {
       this.mensaje = 'Vuelva a intentarlo';
     }
     this.nuevoJuego.registrarJugada(this.nuevoJuego.gano, 0);
-    // this.fire.saveJuego(this.nuevoJuego);
+    this.fire.saveJuego(this.nuevoJuego);
     this.juegoServ.crearJuego(this.nuevoJuego);
   }
 

@@ -17,7 +17,7 @@ export class JuegoMemotest extends Juego {
     mensaje: string;
     puntajePC = 0;
     puntajeJugador = 0;
-    // elementos que acertó descubrir
+    // elementos que acerto descubrir
     jugadasHumano: Array<string>;
     jugadasMaquina: Array<string>;
     tablero2: Array<{elem: string, descubierto: boolean}>;

@@ -114,6 +114,4 @@ export class JuegoTateti extends Juego {
 
 
 
-
-
 }

@@ -13,6 +13,7 @@ export class AuthenticationService {
 
   jugador: Jugador;
   estaLogueado: boolean;
+  redirectUrl: string;
 
   constructor(private fireAuth: AngularFireAuth, 
               // private fireCloud: FirebaseService,

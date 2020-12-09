@@ -11,7 +11,7 @@ import { AgilidadAritmeticaComponent } from '../componentes/agilidad-aritmetica/
 import { MenuComponent } from '../componentes/menu/menu.component';
 import { AdivinaMasListadoComponent } from '../componentes/adivina-mas-listado/adivina-mas-listado.component';
 import { AgilidadMasListadoComponent } from '../componentes/agilidad-mas-listado/agilidad-mas-listado.component';
-import { ListadoComponent } from'../componentes/listado/listado.component'
+import { ListadoComponent } from '../componentes/listado/listado.component'
 import { ListadosComponent } from '../componentes/listados/listados.component';
 import { JuegosComponent } from '../componentes/juegos/juegos.component';
 import { RegistroComponent } from '../componentes/registro/registro.component';
@@ -26,38 +26,38 @@ import { TatetiComponent } from '../componentes/tateti/tateti.component';
 import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
 import { MemotestComponent } from '../componentes/memotest/memotest.component';
 import { AhorcadoComponent } from '../componentes/ahorcado/ahorcado.component';
+import { LogueadoGuard } from '../guards/logueado.guard';
 
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
   { path: '', component: LoginComponent },
   { path: 'Login', component: LoginComponent },
-  { path: 'Jugadores', component: JugadoresListadoComponent },
-{path: 'Mapa' , component: MapaDeGoogleComponent},
-{path: 'QuienSoy' , component: QuienSoyComponent},
-{path: 'Registro' , component: RegistroComponent},
-{path: 'Principal' , component: PrincipalComponent},
-{path: 'Listado' , component: ListadoComponent},
-{path: 'Paises' , component: ListadoDePaisesComponent},
-
+  { path: 'Registro', component: RegistroComponent },
+  { path: 'Jugadores', component: JugadoresListadoComponent, canActivate: [LogueadoGuard] },
+  { path: 'Mapa', component: MapaDeGoogleComponent, canActivate: [LogueadoGuard]  },
+  { path: 'QuienSoy', component: QuienSoyComponent, canActivate: [LogueadoGuard]  },
+  { path: 'Principal', component: PrincipalComponent, canActivate: [LogueadoGuard]  },
+  { path: 'Listado', component: ListadoComponent, canActivate: [LogueadoGuard]  },
+  { path: 'Paises', component: ListadoDePaisesComponent, canActivate: [LogueadoGuard]  },
   {
     path: 'Juegos',
-component: JuegosComponent ,
-children:
-     [{path: '' , component: MenuCardComponent},
-     {path: 'Adivina' , component: AdivinaElNumeroComponent},
-      {path: 'AdivinaMasListado' , component: AdivinaMasListadoComponent},
-      {path: 'AgilidadaMasListado' , component: AgilidadMasListadoComponent},
-      {path: 'Agilidad' , component: AgilidadAritmeticaComponent},
-      {path: 'PiedraPapelTijera', component: PiedraPapelTijeraComponent},
-      {path: 'Tateti', component: TatetiComponent},
-      {path: 'Anagrama', component: AnagramaComponent},
-      {path: 'Memotest', component: MemotestComponent},
-      {path: 'Ahorcado', component: AhorcadoComponent}
-    ]
-},
-{path: '**' , component: ErrorComponent},
-{path: 'error' , component: ErrorComponent}];
+    component: JuegosComponent, canActivate: [LogueadoGuard] , 
+    children:
+      [{ path: '', component: MenuCardComponent },
+      { path: 'Adivina', component: AdivinaElNumeroComponent },
+      { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
+      { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
+      { path: 'Agilidad', component: AgilidadAritmeticaComponent },
+      { path: 'PiedraPapelTijera', component: PiedraPapelTijeraComponent },
+      { path: 'Tateti', component: TatetiComponent },
+      { path: 'Anagrama', component: AnagramaComponent },
+      { path: 'Memotest', component: MemotestComponent },
+      { path: 'Ahorcado', component: AhorcadoComponent }
+      ]
+  },
+  { path: '**', component: ErrorComponent },
+  { path: 'error', component: ErrorComponent }];
 
 @NgModule({
   imports: [

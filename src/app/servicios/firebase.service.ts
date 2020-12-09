@@ -21,7 +21,16 @@ export class FirebaseService {
     // esto devuelve un observ. Al cual le haces un suscribe.
     return this.firebase.collection(this.jugadoresCollection).valueChanges();
   }
+  public getJugadorByEmail(email: string): Jugador {
+    let listaJugadores = new Array<Jugador>();
 
+    this.getJugadores().subscribe(
+      (lista: Array<Jugador>) => {
+           listaJugadores = lista;
+      }
+    )
+    return listaJugadores.find(j=>j.email == email);
+  }
   //  Agarras la col, armas un json para guardarlo
   public saveJugadores(jugador: Jugador): Promise<any> {
     return this.firebase.collection(this.jugadoresCollection).add({
@@ -40,9 +49,12 @@ export class FirebaseService {
     return this.firebase.collection(this.juegoCollection).valueChanges();
   }
 
+  //Ver de hacer un to json de cada objeto para guardar todos los datos directamente.
+
   public saveJuego(juego: Juego): Promise<any> {
     return this.firebase.collection(this.juegoCollection).add({
       nombre: juego.nombre,
+      usuario: juego.usuario,
       jugador: juego.jugador,
       gano: juego.gano,
       puntaje: juego.puntaje,

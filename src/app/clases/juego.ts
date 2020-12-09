@@ -4,27 +4,34 @@ import { Usuario } from './usuario';
 
 export abstract class Juego {
   public nombre = 'Sin Nombre';
-  public usuario: string;
   public gano = false;
-  public puntaje: number;
-  public intentos: number;
+  public usuario: string;
+  public puntaje: number = 0;
+  public intentos: number = 0;
   public fecha: Date;
-  public tiempo: Date;
   public jugador: Jugador;
-  
-  constructor(nombre?: string, gano?: boolean, usuario?: string, intentos?:number, fecha?:Date, tiempo?: Date, jugador?: Jugador) {
-    if (nombre) { this.nombre = nombre;}
-    if (gano) {this.gano = gano;}
-    if (usuario) {this.usuario = usuario;} else {this.usuario = sessionStorage.getItem('usuario');}
-    if (intentos) {this.intentos = intentos;} else {this.intentos = 0;}
-    if (fecha) {this.fecha = fecha;} else {Date.now();}
-    if (jugador) {this.jugador = jugador;} else {this.jugador = null} 
+
+  constructor(
+    nombre?: string,
+    gano?: boolean,
+    usuario?: string,
+    intentos?: number,
+    puntaje?: number,
+    fecha?: Date,
+    jugador?: Jugador) {
+    if (nombre) { this.nombre = nombre; }
+    if (gano) { this.gano = gano; }
+    if (usuario) { this.usuario = usuario.replace('""','"'); } else { this.usuario = sessionStorage.getItem('usuario').replace('""','"'); }
+    if (intentos) { this.intentos = intentos; } else { this.intentos = 0; }
+    if (fecha) { this.fecha = fecha; } else { Date.now(); }
+    if (jugador) { this.jugador = jugador; } else { this.jugador = null }
+    if (puntaje) { this.puntaje = puntaje; } else { this.puntaje = 0; }
 
 
   }
 
   getSession() {
-    return this.usuario = sessionStorage.getItem('usuario');
+    return this.usuario = sessionStorage.getItem('usuario').replace('""','"');
   }
 
 
@@ -42,6 +49,18 @@ export abstract class Juego {
     this.fecha = new Date();
     this.puntaje = puntaje;
     console.info(`Por salvar el juego ${this}`);
+  }
+
+  public toJson() {
+    return {
+      "nombre": this.nombre,
+      "gano": this.gano,
+      "usuario": this.usuario,
+      "puntaje": this.puntaje,
+      "intentos": this.intentos,
+      "fecha": this.fecha,
+      "jugador": this.jugador
+    }
   }
 
 }

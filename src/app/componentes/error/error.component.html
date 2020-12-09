@@ -1,4 +1,4 @@
-
+<!-- 
 <div id="fondo">
     <div class="panel panel-default">
         <div class="hero-text">
@@ -12,4 +12,14 @@
                 <a routerLink="/Login"><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>
         </ul>
     </div>
-</div>
+</div> -->
+<div class="card border-danger mb-3">
+    <!-- <img src="../../../assets/imagenes/noAutorizado.jpg" height="300" class="card-img-top" alt="Error"> -->
+    <div class="card-header">Error</div>
+    <div class="card-body text-danger">
+      <h5 class="card-title">Error de Autenticación</h5>
+      <p class="card-text">Ocurrió un error en la aplicación o usted no posee permisos para la página a la que desea acceder.</p>
+      <p class="card-text"><small class="text-muted">Por favor reintente...</small></p>
+      <button type="button" class="btn btn-danger" routerLink="/Login"  >Volver</button>
+    </div>
+  </div>

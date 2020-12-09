@@ -4,7 +4,7 @@ import { Juego } from './juego';
 export class JuegoPiedraPapelTijera extends Juego {
 
     constructor(nombre?: string, gano?: boolean, jugador?: string, intentos?: number) {
-        super('PiedraPapelTijera', gano, sessionStorage.getItem('usuario'), 0);
+        super('Piedra Papel o Tijera', gano, sessionStorage.getItem('usuario'), 0);
       }
 
     options: string[] = ['Piedra', 'Papel', 'Tijera'];
@@ -31,18 +31,18 @@ export class JuegoPiedraPapelTijera extends Juego {
                 }
             }
         }
-        this.registrarJugada(result, this.puntajeJugador);
 
+        
         if (this.mensaje == 'Empate!') {
             this.puntajeJugador++;
             this.puntajePC++;
         } else
-            if (this.gano) {
+            if (result) {
                 this.puntajeJugador++;
             } else {
                 this.puntajePC++;
             }
-
+        this.registrarJugada(result, this.puntajeJugador);
         return result;
     }
 

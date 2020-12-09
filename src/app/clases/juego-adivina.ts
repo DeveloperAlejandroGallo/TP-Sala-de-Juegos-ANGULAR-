@@ -14,12 +14,13 @@ export class JuegoAdivina extends Juego
         if (this.numeroIngresado == this.numeroSecreto) {
           this.gano = true;
         }
-        this.registrarJugada(this.gano, this.gano ? 1 : 0);
+        this.registrarJugada(this.gano, 7 - this.intentos);
         return this.gano;
      }
 
      public generarnumero() {
         this.numeroSecreto = Math.floor((Math.random() * 100) + 1);
+        this.numeroIngresado = 0;
         console.info('numero Secreto:' + this.numeroSecreto);
         this.gano = false;
       }

@@ -1,9 +1,19 @@
+.fondo {
+    height: 600px;
+    background-image: url("../../../assets/imagenes/FondoAgilidad.jpg");
+    background-size: 100% 100%;
+    /* background-color: salmon; */
+    padding: 50px;
+}
 
 form {
     border: 10px solid #f1f1f1;
     padding: 10px;
     background:gray;
+    background-color: lightblue;
 }
+
+
 
 input[type=text], input[type=password] {
     width: 100%;
@@ -50,6 +60,7 @@ img.avatar {
 
 .container {
     padding: 16px;
+    align-items: center;
 }
 
 span.psw {

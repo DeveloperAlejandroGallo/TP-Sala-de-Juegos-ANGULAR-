@@ -55,7 +55,8 @@ export class LoginComponent implements OnInit {
 
       const logging = await this.fireAuth.login(this.usuario);
       if (logging) {
-        sessionStorage.setItem("usuario", JSON.stringify(this.email));
+        sessionStorage.setItem('usuario', this.email);//JSON.stringify(this.email)
+        this.fireAuth.estaLogueado = true;
         this.fireAuth.redirect('Principal');
       } else {
         this.fireAuth.redirect('Error');
@@ -75,7 +76,7 @@ export class LoginComponent implements OnInit {
           this.msg = error.message;
       }
       Swal.fire({
-        title: 'Error Aca?',
+        title: 'Error',
         text: this.msg,
         icon: 'error'
       }).then(a => {
