@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import { FirebaseService } from '../../servicios/firebase.service'; 
 import { JuegoAdivina } from '../../clases/juego-adivina';
 import { JuegosService } from '../../servicios/juegos.service';
+import { AuthenticationService } from '../../servicios/authentication.service';
+import { Jugador } from '../../clases/jugador';
 
 @Component({
   selector: 'app-adivina-el-numero',
@@ -17,18 +19,34 @@ export class AdivinaElNumeroComponent implements OnInit {
   Mensajes: string;
   contador: number;
   ocultarVerificar: boolean;
+  usuario;
+  jugador: Jugador;
 
   constructor(private fire: FirebaseService, 
               private router: Router,
-              private juegoServ: JuegosService) {
+              private juegoServ: JuegosService,
+              private authService: AuthenticationService) {
     this.nuevoJuego = new JuegoAdivina();
     console.info('numero Secreto:', this.nuevoJuego.numeroSecreto);
     this.ocultarVerificar = false;
+    this.obtenerJugador();
   }
+
+
+  public obtenerJugador() {
+    this.authService.currentUser().then(resp=>{
+      this.usuario=resp;
+      console.log('usuarioActivo ' + this.usuario.email);
+    
+      this.jugador = this.fire.getJugadorByEmail(this.usuario.email);
+    });
+  }
+
+
   generarnumero() {
     this.nuevoJuego.generarnumero();
     this.contador = 0;
-    
+    // this.nuevoJuego.jugador = this.jugador;
   }
   verificar() {
     this.contador++;
@@ -70,10 +88,10 @@ export class AdivinaElNumeroComponent implements OnInit {
           break;
 
         default:
-            mensaje ='Ya le erraste '+ this.contador +' veces';
+            mensaje ='Ya le erraste '+ this.nuevoJuego.intentos +' veces';
           break;
       }
-      this.MostarMensaje('#'+ this.contador +' '+ mensaje +' \nAyuda :'+ this.nuevoJuego.retornarAyuda());
+      this.MostarMensaje('#'+ this.nuevoJuego.intentos+' '+ mensaje +' \nAyuda :'+ this.nuevoJuego.retornarAyuda());
 
 
     }

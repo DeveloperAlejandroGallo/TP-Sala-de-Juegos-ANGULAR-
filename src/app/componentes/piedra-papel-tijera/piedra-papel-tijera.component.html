@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="titulo">
-                <h1>{{nuevoJuego.nombre}}</h1>
+                <p>{{nuevoJuego.nombre}}</p>
             </div>
         </div>
     </div>
@@ -44,13 +44,13 @@
     <div class="row" *ngIf="jugado">
 
     </div>
-    <div class="container" *ngIf='jugado'>
+    <!-- <div class="container" *ngIf='jugado'>
         <div class="transparente">
             <p id="puntaje">Jugaste: {{nuevoJuego.options[this.nuevoJuego.playerOption]}}</p><br>
             <p id="puntaje">PC Jugó: {{nuevoJuego.options[this.nuevoJuego.optionPC]}}</p><br>
             <p id="puntaje">Resultado: {{nuevoJuego.mensaje}}</p>
         </div>
-    </div>
+    </div> -->
     <div class="container">
         <button id="button1" (click)="nuevo()">Nuevo Juego</button>
         <!-- <button *ngIf="iniciarJuego" id="button1" (click)="fin()">Finalizar</button> -->

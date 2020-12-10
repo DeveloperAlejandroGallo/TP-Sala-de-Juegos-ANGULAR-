@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Jugador } from 'src/app/clases/jugador';
-import { JugadoresService } from 'src/app/servicios/jugadores.service';
-import { UsuariosService } from 'src/app/servicios/usuarios.service';
+import { Jugador } from '../../clases/jugador';
+import { JugadoresService } from '../../servicios/jugadores.service';
+import { UsuariosService } from '../../servicios/usuarios.service';
 import { Usuario } from '../../clases/usuario';
 import { AuthenticationService } from '../../servicios/authentication.service';
 

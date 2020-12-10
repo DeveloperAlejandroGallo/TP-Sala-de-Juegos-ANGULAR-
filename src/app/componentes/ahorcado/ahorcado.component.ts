@@ -4,6 +4,8 @@ import { FirebaseService } from '../../servicios/firebase.service';
 import { JuegoAhorcado } from '../../clases/juego-ahorcado';
 import { JuegosService } from '../../servicios/juegos.service';
 import  Swal  from "sweetalert2";
+import { AuthenticationService } from '../../servicios/authentication.service';
+import { Jugador } from '../../clases/jugador';
 
 @Component({
   selector: 'app-ahorcado',
@@ -12,7 +14,10 @@ import  Swal  from "sweetalert2";
 })
 export class AhorcadoComponent implements OnInit {
 
-  constructor(private fire: FirebaseService, private router: Router,private juegoServ: JuegosService) { }
+  constructor(private fire: FirebaseService, private router: Router,
+              private juegoServ: JuegosService, private authService: AuthenticationService) {
+                this.obtenerJugador();
+               }
   juegoActivo: boolean = false;
   nuevoJuego: JuegoAhorcado;
   palabraPantalla: Array<string>;
@@ -20,9 +25,23 @@ export class AhorcadoComponent implements OnInit {
   mensaje: string;
   errores: number;
   primera: boolean;
+  usuario;
+  jugador: Jugador;
   ngOnInit(): void {
     this.primera = true;
   }
+
+  
+  public obtenerJugador() {
+    this.authService.currentUser().then(resp=>{
+      this.usuario=resp;
+      console.log('usuarioActivo ' + this.usuario.email);
+    
+      this.jugador = this.fire.getJugadorByEmail(this.usuario.email);
+    });
+  }
+
+
 
   letraClick(char: string) {
     console.log('click:'+char);
@@ -86,6 +105,7 @@ export class AhorcadoComponent implements OnInit {
 
   nuevo() {
     this.nuevoJuego = new JuegoAhorcado();
+    // this.nuevoJuego.jugador = this.jugador;
     this.juegoActivo = true;
     if(!this.primera) {
       const celda = document.getElementById('ahorcado') as unknown as any;

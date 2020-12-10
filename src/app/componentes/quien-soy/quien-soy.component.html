@@ -18,29 +18,85 @@
     </div>
 </nav> -->
 <app-nav-bar></app-nav-bar>
+<!-- <div class="cotainer center">
+<div class="card text-center mb-8" >
+    <img src="./assets/imagenes/quiensoy.png" class="card-img-top" alt="Ale Gallo">
+    <div class="card-body">
+      <h5 class="card-title">Quién Soy?</h5>
+      <p class="card-text">Alejandro Gallo alumno de la UTN FRA</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card text-center">
+    <div class="card-header">Mi Juego</div>
+    <div class="card-body">
+      <h5 class="card-title">El Ahorcado</h5>
+      <p class="card-text">Se trata del famoso Ahorcado.</p>
+      <p class="card-text">Aparecer&aacute; una palabra al azar, la cual se debe adiviniar letra a letra arriesgando con el teclado ofrecido. 
+        <br>Por cada error se ir&aacute; dibujando el hombrecito que al finalizar los 9 turnos, quedar&aacute; ahorcado si no se lleg&oacute; a adivinar antes la palabra.</p>
+    </div>
+    <div class="card-footer text-muted">AJG 2020</div>
+  </div>
+</div> -->
+
 <!-- First Container -->
-<div id="quiwn" class="container-fluid text-center">
-    <h3 class="margin">Quién Soy?</h3>
+<div id="quiwn" class="container-fluid text-center bg-1">
+    <h1 class="margin">Quién Soy?</h1>
     <img src="./assets/imagenes/quiensoy.png" class="img-responsive img-circle margin" style="display:inline" alt="Ale Gallo" width="350" height="350">
     <h3>Alejandro Gallo alumno de la UTN FRA</h3>
 </div>
 
 <!-- Second Container -->
-<div id="que" class="container-fluid bg-2 text-center">
-    <h3 class="margin">Mi Juego: &iexcl;AHORCADO!</h3>
-    <p>Se trata del famoso Ahorcado. 
-        <br>Aparecer&aacute; una palabra al azar, la cual se debe adiviniar letra a letra arriesgando con el teclado ofrecido. 
-        <br>Por cada error se ir&aacute; dibujando el hombrecito que al finalizar los 9 turnos, quedar&aacute; ahorcado si
-        no se lleg&oacute; a adivinar antes la palabra.
-    </p>
-    <a href="#" class="btn btn-default btn-lg">
-        <span class="glyphicon glyphicon-file"></span> Descargar PDF
-    </a>
-</div>
+<div id ="que" class="container-fluid bg-2 text-center">
+    <h2 class="margin">Bienvenido a la Sala de juegos</h2>
+    <h4> Breve descripcion de cada juego:</h4>
+    <br>
+    <p class="color-juego" > Juego propio : Ahorcado </p>
+    <p> Modo de Juego : Adivinar la palabra buscada antes de que el personaje muera</p>
+    <p> El jugador puede seleccionar la letras a jugar para completar la palabra</p>
+    <p> Condicion para ganar :  Adivinar la palabra antes de los 9 errores. </p>
+    <p> Puntaje :  Es 9 - la cantidad de errores por letra incorrecta, 0 por no adivinar. </p>
 
+
+    <p class="color-juego" > Juego de Agilidad mental </p>
+    <p> Condicion para ganar : debe responder correctamente como minimo 3.  </p>
+    <p> Operaciones :  suma , resta , multiplicacion. </p>
+    <p> Puntaje : 5 puntos por respuesta correcta y 1 por incorrecta. </p>
+
+    <p class="color-juego"> Juego de adivina el Numero </p>
+    <p> Condicion para ganar : debe encontrar el numero secreto.  </p>
+    <p> Puntaje : 10 puntos si se adivina el numero a la primera vez y 1 si se adivina en las siguientes. </p>
+    <p> Aclaracion: Si no se adivina el numero en el primer intento, la partida se considera como perdida por mas que se realice en los siguientes.</p>
+
+    <p class="color-juego" > Juego de Piedra papel o tijera  </p>
+    <p> Condicion para ganar : Debe elegir una opcion al azar que gane a la eleccion de la maquina. </p>
+    <p> Opciones :  piedra, papel o tijera.  </p>
+    <p> Puntaje : 1 punto por ganar la partida , 1 por empate y 0 por perder. </p>
+
+    <p class="color-juego" > Juego de Anagrama </p>
+    <p> Modo de juego : debe armar otra palabra con la que el juego le brinde. </p>
+     <p> Condicion para ganar : debe responder la mayor cantidad de palabras. </p>
+    <p> Puntaje : cantidad de palabras contestadas en 1 minuto y 30 segundos. </p>
+
+    <p class="color-juego" > Juego de TATETI </p>
+    <p> Modo de juego : debe realizar marcas en los casilleros distintos, pueden ser horizontales, verticales o diagonales. </p>
+    <p> Condicion para ganar : debe responder realizar 3 marcas antes que el rival.</p>
+    <p> Puntaje : 1 punto para el ganador y 0 para el perdedor. </p>
+    <p> Aclaracion : Los empates no se registran </p>
+
+    <p class="color-juego" > Juego de Memotest </p>
+    <p> Modo de juego : debe seleccionar 2 tarjetas y ambas fotos deben coincidir. </p>
+    <p> Condicion para ganar : debe encontrar todos los pares de tarjetas iguales gana el que mas pares encuentre.</p>
+    <p> Puntaje : el puntaje sera equivalente a la cantidad de pares de tarjetas encontrados. </p>
+
+
+    <a href="#" class="btn btn-default btn-lg">
+      <span class="glyphicon glyphicon-file"></span> Descargar PDF
+    </a>
+  </div>
 <!-- Third Container (Grid) -->
 <div id="donde" class="container-fluid bg-3 text-center">
-    <h3 class="margin">Dónde Funciona?</h3><br>
+    <h2 class="margin">Dónde Funciona?</h2><br>
     <div class="row">
         <div class="col-sm-4">
             <p>Con las tecnologias WEB que permiten desarrollar aplicaciones multiplataforma</p>

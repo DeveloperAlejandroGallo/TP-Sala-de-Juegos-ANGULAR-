@@ -26,3 +26,8 @@
     background: #55ACEE;
     color: white;
 }
+
+.input-group {
+    padding-top: 15px;
+    padding-right: 15px;
+}

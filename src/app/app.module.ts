@@ -66,6 +66,8 @@ import { SubirImagenComponent } from './componentes/subir-imagen/subir-imagen.co
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './servicios/authentication.service';
 import { StorageFirebaseService } from './servicios/storage-firebase.service';
+import { ColorUsuariosDirective } from './directivas/color-usuarios.directive';
+import { JuegoPipe } from './pipes/juego.pipe';
 // Material
 
 
@@ -99,7 +101,9 @@ import { StorageFirebaseService } from './servicios/storage-firebase.service';
     MemotestComponent,
     AhorcadoComponent,
     NavBarComponent,
-    SubirImagenComponent
+    SubirImagenComponent,
+    ColorUsuariosDirective,
+    JuegoPipe
   ],
   imports: [
     BrowserModule,

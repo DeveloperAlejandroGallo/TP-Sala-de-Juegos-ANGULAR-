@@ -21,6 +21,20 @@ export class JuegoTateti extends Juego {
     ganador = true;
     perdedor = false;
 
+
+    public toJson() {
+        return {
+          "nombre": this.nombre,
+          "gano": this.gano,
+        "usuario": this.usuario,
+          "puntaje": this.puntaje,
+          "intentos": this.intentos,
+          "fecha": this.fecha,
+          // "jugador": this.jugador,
+          "puntajePC": this.puntajePC
+        }
+      }
+
     jugadaMaquina(): [number, number]
     {
         const libres = this.celdasLibres();

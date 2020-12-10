@@ -4,24 +4,34 @@
   <li><a (click)="TraerGanadores()">Los ganadores</a></li>
   <li><a (click)="TraerPerdedores()">Los perdedores</a></li> -->
 <!-- </ul> -->
-
-
-
+<app-nav-bar></app-nav-bar>
+<h2>Listado de Jugadores</h2>
+<form class="form-inline my-2 my-lg-0">
+  <button  class="btn btn-primary my-2 mr-sm-2" (click)="listarJugadoresPorResultado('todos')">Todos</button>
+  <button class="btn btn-success my-2 mr-sm-2" (click)="listarJugadoresPorResultado('ganadores')">Ganadores</button>
+  <button class="btn btn-danger my-2 mr-sm-2" (click)="listarJugadoresPorResultado('perdedores')">Perdedores</button>
+</form>
 <table class="table table-condensed">
   <thead>
     <tr>
-      <th>usuario</th>
-      <th>cuit</th>
-      <th>sexo</th>
-      <th>gano</th>
+      <th>Avatar</th>
+      <th>Nombre</th>
+      <th>Apodo</th>
+      <th>E-Mail</th>
+      <th>Sexo</th>
+      <th *ngIf="mostrar=='todos'">Veces que Jugó</th>
+      <th *ngIf="mostrar=='ganadores'">Veces que Ganó</th>
+      <th *ngIf="mostrar=='perdedores'">Veces que Perdió</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let jugador of listado" >
-      <!-- <td>{{jugador.usuario}} </td>
-      <td>{{jugador.cuit}} </td> 
-      <td>{{jugador.sexo | sexo| uppercase}} </td> 
-      <td>{{jugador.gano}} </td>  -->
+    <tr *ngFor="let elem of listaJugadores" >
+      <img height=50px width=50px [src]="elem.avatar" alt="">
+      <td>{{elem.nombre}} </td> 
+      <td>{{elem.nickname}} </td> 
+      <td>{{elem.email}} </td> 
+      <td>{{elem.sexo   | sexo| uppercase}} </td> 
+      <td>{{cantidadDeJugadas(elem.email)}} </td> 
       
     </tr>
    

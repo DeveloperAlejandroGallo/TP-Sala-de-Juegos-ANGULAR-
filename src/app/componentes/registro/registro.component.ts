@@ -39,6 +39,7 @@ export class RegistroComponent implements OnInit {
   public perfil: string; // Profesional - Paciente - Administrador
   public activo: boolean;
   public nickname: string;
+  public sexo: string;
 
 
 
@@ -107,7 +108,7 @@ export class RegistroComponent implements OnInit {
 
           this.userService.createUser(this.usuario).subscribe((res: any) => {
 
-            this.jugador =  new Jugador(this.nickname,this.nombre, this.email, this.publicURL, 'Jugador');
+            this.jugador =  new Jugador(this.nickname,this.nombre, this.email, this.publicURL, 'Jugador', this.sexo);
             this.fireCloud.saveJugadores(this.jugador);
             this.jugadorServ.crearJugador(this.jugador).subscribe((res: any)=>{
               Swal.fire({

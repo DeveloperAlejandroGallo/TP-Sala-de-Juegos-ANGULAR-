@@ -14,6 +14,22 @@ export class JuegoAnagrama extends Juego {
       anagramaTable: Array<[string, string]>;
       puntaje: number;
 
+      public toJson() {
+        return {
+          "nombre": this.nombre,
+          "gano": this.gano,
+          "usuario": this.usuario,
+          "puntaje": this.puntaje,
+          "intentos": this.intentos,
+          "fecha": this.fecha,
+          // "jugador": this.jugador,
+          "anagrama": this.anagrama,
+          "respuestaCorrecta": this.respuestaCorrecta,
+          "respuestaUsr": this.respuestaUsr
+        }
+      }
+
+
     inicializar(){
         this.anagrama = '';
         this.respuestaCorrecta = '';

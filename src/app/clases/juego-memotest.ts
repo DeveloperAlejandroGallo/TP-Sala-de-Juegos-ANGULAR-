@@ -25,6 +25,22 @@ export class JuegoMemotest extends Juego {
     perdedor = false;
 
 
+    public toJson() {
+        return {
+          "nombre": this.nombre,
+          "gano": this.gano,
+        "usuario": this.usuario,
+          "puntaje": this.puntaje,
+          "intentos": this.intentos,
+          "fecha": this.fecha,
+          // "jugador": this.jugador,
+          "puntajePC": this.puntajePC,
+          "jugadasJugador": this.jugadasHumano,
+          "jugadasPC": this.jugadasMaquina,
+          "tablero": this.tablero2
+        }
+      }
+
     inicializar() {
         let i: number;
 
@@ -97,6 +113,7 @@ export class JuegoMemotest extends Juego {
                 this.mensaje = 'Perdiste!';
                 this.registrarJugada(this.perdedor, this.puntajeJugador);
             } else {
+                this.registrarJugada(this.ganador, this.puntajeJugador);
                 this.mensaje = 'Empate!';
             }
         }
@@ -138,7 +155,8 @@ export class JuegoMemotest extends Juego {
 
     QuedanLibres() {
         let filter: Array<any>;
-        filter = this.tablero2.filter(elem => elem.descubierto );
-        return filter.length !== 0;
+        filter = this.tablero2.filter(elem => elem.descubierto == false );
+        console.log('Libres: '+filter.length.toString());
+        return filter.length != 0;
     }
 }

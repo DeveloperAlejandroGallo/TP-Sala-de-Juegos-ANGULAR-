@@ -7,9 +7,26 @@ form {
 }
 
 .fondo {
-    height: 600px;
+     height: 100%;/*600px; */
     background-image: url("../../../assets/imagenes/FondoAgilidad.jpg");
     background-size: 100% 100%;
     /* background-color: salmon; */
     padding: 50px;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    font-size: 60px;
+    background-color: rgba(47, 47, 185, 0.274);
+    color: rgba(58, 23, 175);
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    margin: auto;
+    font-style: italic;
+    padding-bottom: 10px;
 }

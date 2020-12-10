@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Juego } from 'src/app/clases/juego';
+import { Juego } from '../../clases/juego';
 import { FirebaseService } from '../../servicios/firebase.service';
 import { JuegoServiceService } from '../../servicios/juego-service.service';
 
@@ -13,6 +13,9 @@ export class ListadoComponent implements OnInit {
   public listaJuegos: Array<Juego>;
 
    miServicioJuego:JuegoServiceService
+
+  email: string;
+  juego: string;
 
    constructor(private db : FirebaseService) {
     this.listarResultados();
@@ -42,7 +45,7 @@ export class ListadoComponent implements OnInit {
         break;
       case 'mejores5':
         this.listadoParaCompartir = this.listaJuegos.filter(j => j.gano == true).sort((a,b)=>{return b.puntaje - a.puntaje});
-        this.listadoParaCompartir.length = 5; 
+        this.listadoParaCompartir.length = 10; 
         break;
       default:
         this.listadoParaCompartir = this.listaJuegos;

@@ -14,6 +14,22 @@ export class JuegoPiedraPapelTijera extends Juego {
     puntajePC: number = 0;
     puntajeJugador: number = 0;
 
+    public toJson() {
+        return {
+          "nombre": this.nombre,
+          "gano": this.gano,
+        "usuario": this.usuario,
+          "puntaje": this.puntaje,
+          "intentos": this.intentos,
+          "fecha": this.fecha,
+          // "jugador": this.jugador,
+          "puntajePC": this.puntajePC,
+          "opcionJugador": this.options[this.playerOption],
+          "opcionPC": this.options[this.optionPC]
+        }
+      }
+
+
     public verificar(): boolean {
         let result = false;
         this.mensaje = 'Perdiste!';

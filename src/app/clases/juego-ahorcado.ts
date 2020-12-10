@@ -22,6 +22,21 @@ export class JuegoAhorcado extends Juego {
     diccionario: Array<string>;
     palabraJugador: Array<string>;
 
+    public toJson() {
+        return {
+          "nombre": this.nombre,
+          "gano": this.gano,
+        "usuario": this.usuario,
+          "puntaje": this.puntaje,
+          "intentos": this.intentos,
+          "fecha": this.fecha,
+          // "jugador": this.jugador,
+          "palabraBuscada": this.palabraBuscada
+        }
+      }
+
+
+
     obtenerPalabraAlAzar(){
         this.palabraBuscada = this.diccionario[Math.floor(Math.random() * this.diccionario.length)];
         this.palabraMostrada = new Array<{letra: string, visible: boolean}>();
@@ -29,7 +44,7 @@ export class JuegoAhorcado extends Juego {
 
         for (let i = 0; i < this.palabraBuscada.length; i++) {
             this.palabraMostrada[i] = {letra: this.palabraBuscada[i], visible: i === 0};
-            if (this.palabraBuscada[i].toUpperCase() === 'Ñ') { // Muestro la primera
+            if (this.palabraBuscada[i].toUpperCase() === 'ï¿½') { // Muestro la primera
                 this.palabraMostrada[i] = {letra: '\u00D1', visible: i === 0};
             } 
         }

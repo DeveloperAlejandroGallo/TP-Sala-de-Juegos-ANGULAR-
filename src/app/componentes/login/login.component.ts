@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   }
 
   Entrar() {
-    if (this.email === 'admin@admin.com' && this.clave === 'adminadmin') {
+    if (this.email === 'admin@yopmail.com' && this.clave === '123456') {
       this.router.navigate(['/Principal']);
     } else {
       this.onLogin();
@@ -150,8 +150,7 @@ export class LoginComponent implements OnInit {
 
     switch (usr) {
       case 'admin':
-        this.email = 'admin@admin.com';
-        this.clave = 'adminadmin';
+        this.email = 'admin@yopmail.com';
         break;
       case 'jugador1':
         this.email = 'jugador1@yopmail.com';
@@ -172,9 +171,7 @@ export class LoginComponent implements OnInit {
         this.email = 'jugador6@yopmail.com';
         break;
     }
-    if (usr != 'admin') {
       this.clave = '123456';
-    }
 
   }
 

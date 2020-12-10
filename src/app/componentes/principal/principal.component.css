@@ -28,7 +28,7 @@ h6 {
 }
 
 .fondoitemmenu {
-    background-color: rgb(172, 172, 172, 0.5);
+    background-color: rgba(172, 172, 172, 0.664);
     border-radius: 5px;
     margin-top: 5px;
 }

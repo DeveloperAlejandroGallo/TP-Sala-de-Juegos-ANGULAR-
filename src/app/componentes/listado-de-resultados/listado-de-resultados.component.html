@@ -18,7 +18,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let juego of listado">
+    <tr *ngFor="let juego of listado" appColorUsuarios [resultado]="juego.gano">
       <td>{{juego.usuario}} </td>
       <td>{{juego.nombre}} </td>
       <td>{{juego.fecha.toDate() | date:  'dd/MM/yyyy HH:mm'}} </td>

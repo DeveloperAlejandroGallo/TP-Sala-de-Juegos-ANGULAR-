@@ -24,6 +24,15 @@
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
+                <label class="input-group-text" for="sexo">Sexo</label>
+              </div>
+              <select class="custom-select" id="sexo" [(ngModel)]="sexo">
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
                 <span class="input-group-text" id="email">E-mail</span>
               </div>
               <input type="email" class="form-control" [(ngModel)]="email" placeholder="E-mail" aria-label="Email"

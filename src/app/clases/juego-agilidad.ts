@@ -15,10 +15,29 @@ export class JuegoAgilidad extends Juego {
     super('Agilidad Aritmetica', gano, sessionStorage.getItem('usuario').replace('""','"'), 0);
   }
 
+
+  public toJson() {
+    return {
+      "nombre": this.nombre,
+      "gano": this.gano,
+      "usuario": this.usuario,
+      "puntaje": this.puntaje,
+      "intentos": this.intentos,
+      "fecha": this.fecha,
+      // "jugador": this.jugador,
+      "primerNumero": this.primerNumero,
+      'operador': this.operador,
+      "segundoNumero": this.segundoNumero,
+      "respuestaCorrecta": this.respuesta,
+      "respuestaJugador": this.numeroIngresado
+    }
+  }
+
+
   public verificar() {
 
     this.gano = this.respuesta == this.numeroIngresado;
-    this.registrarJugada(this.gano, this.gano ? 1 : 0);
+    this.registrarJugada(this.gano, this.gano ? (this.intentos == 1 ? 5 : 1) : 0);
     return this.gano;
 
     }

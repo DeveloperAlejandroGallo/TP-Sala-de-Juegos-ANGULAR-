@@ -9,7 +9,7 @@ export abstract class Juego {
   public puntaje: number = 0;
   public intentos: number = 0;
   public fecha: Date;
-  public jugador: Jugador;
+  // public jugador: Jugador;
 
   constructor(
     nombre?: string,
@@ -17,14 +17,13 @@ export abstract class Juego {
     usuario?: string,
     intentos?: number,
     puntaje?: number,
-    fecha?: Date,
-    jugador?: Jugador) {
+    fecha?: Date) {
     if (nombre) { this.nombre = nombre; }
     if (gano) { this.gano = gano; }
     if (usuario) { this.usuario = usuario.replace('""','"'); } else { this.usuario = sessionStorage.getItem('usuario').replace('""','"'); }
     if (intentos) { this.intentos = intentos; } else { this.intentos = 0; }
     if (fecha) { this.fecha = fecha; } else { Date.now(); }
-    if (jugador) { this.jugador = jugador; } else { this.jugador = null }
+    // if (jugador) { this.jugador = jugador; } else { this.jugador = null }
     if (puntaje) { this.puntaje = puntaje; } else { this.puntaje = 0; }
 
 
@@ -58,8 +57,8 @@ export abstract class Juego {
       "usuario": this.usuario,
       "puntaje": this.puntaje,
       "intentos": this.intentos,
-      "fecha": this.fecha,
-      "jugador": this.jugador
+      "fecha": this.fecha
+      // "jugador": this.jugador
     }
   }
 

@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import { FirebaseService } from '../../servicios/firebase.service';
 import { JuegoTateti } from '../../clases/juego-tateti';
+import Swal from 'sweetalert2';
+import { AuthenticationService } from '../../servicios/authentication.service';
+import { Jugador } from '../../clases/jugador';
 
 @Component({
   selector: 'app-tateti',
@@ -17,8 +20,10 @@ export class TatetiComponent implements OnInit {
   MAQUINA = 2;
   mensaje: string;
   eleccionHumano: string;
+  usuario;
+  jugador: Jugador;
 
-  constructor(private fire: FirebaseService, private router: Router) {
+  constructor(private fire: FirebaseService, private router: Router,private authService: AuthenticationService) {
     
     this.iniciarJuego = false;
     this.nuevoJuego = new JuegoTateti();
@@ -28,6 +33,15 @@ export class TatetiComponent implements OnInit {
     this.mensaje = 'Su Turno (X)';
   }
 
+  public obtenerJugador() {
+    this.authService.currentUser().then(resp=>{
+      this.usuario=resp;
+      console.log('usuarioActivo ' + this.usuario.email);
+    
+      this.jugador = this.fire.getJugadorByEmail(this.usuario.email);
+    });
+  }
+  
   nuevo() {
     this.iniciarJuego = true;
     this.limpiarTablero();
@@ -46,15 +60,28 @@ export class TatetiComponent implements OnInit {
 
   jugadaHumano(i: number, j: number) {
     console.log(`Presiono ${i}-${j} `);
+    this.nuevoJuego.intentos++;
     // console.table(this.nuevoJuego.tateti);
     if (this.nuevoJuego.tateti[i][j] == 0) {
         this.marcarCelda(i, j, this.HUMANO);
         if (this.nuevoJuego.esGanador(this.HUMANO)) {
             this.nuevoJuego.puntajeJugador++;
-            this.mensaje = 'FELICITACIONES UD. HA GANADO!!!';
+            this.mensaje = '';
+            Swal.fire({
+              title: 'FELICITACIONES!!!',
+              text: 'Ah ganado esta partida!',
+              icon: 'success'
+            });
+            this.nuevoJuego.registrarJugada(true, 1);
+            this.fire.saveJuego(this.nuevoJuego);
         } else {
             if (this.esEmpate()) {
-              this.mensaje = 'EMPATE!\nPresione Limpiar Tablero para nueva partida.';
+              // this.mensaje = 'EMPATE!\nPresione Limpiar Tablero para nueva partida.';
+              Swal.fire({
+                title: 'EMPATE!!!',
+                text: 'No te la voy a dejar fácil. ¿Jugamos otro?',
+                icon: 'warning'
+              });
               return;
             }
             else {
@@ -66,10 +93,22 @@ export class TatetiComponent implements OnInit {
               this.marcarCelda(celdas[0], celdas[1], this.MAQUINA);
               if (this.nuevoJuego.esGanador(this.MAQUINA)) {
                 this.nuevoJuego.puntajePC++;
-                this.mensaje = 'UD. HA PERDIDO ESTA PARTIDA :(';
+                // this.mensaje = 'UD. HA PERDIDO ESTA PARTIDA :(';
+                Swal.fire({
+                  title: 'PERDISTE!!!',
+                  text: 'Más suerte para la próxima!',
+                  icon: 'error'
+                });
+                this.nuevoJuego.registrarJugada(false, 0);
+                this.fire.saveJuego(this.nuevoJuego);
               } else {
                   if (this.esEmpate()) {
-                    this.mensaje = 'EMPATE!\nPresione Limpiar Tablero para nueva partida.';
+                    // this.mensaje = 'EMPATE!\nPresione Limpiar Tablero para nueva partida.';
+                    Swal.fire({
+                      title: 'EMPATE!!!',
+                      text: 'No te la voy a dejar fácil. ¿Jugamos otro?',
+                      icon: 'warning'
+                    });
                     return;
                   } else {
                     this.mensaje = 'Su Turno (X)';

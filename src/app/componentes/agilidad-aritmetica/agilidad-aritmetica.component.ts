@@ -48,7 +48,7 @@ export class AgilidadAritmeticaComponent implements OnInit {
   NuevoJuego() {
     this.ocultarVerificar = false;
     this.nuevoJuego.numeroIngresado = 0;
-    this.nuevoJuego.jugador = this.jugador;
+    // this.nuevoJuego.jugador = this.jugador;
     this.esperando = false;
     this.generarNumero();
     this.repetidor = setInterval(() => {
@@ -131,12 +131,14 @@ export class AgilidadAritmeticaComponent implements OnInit {
     this.authService.currentUser().then(resp=>{
       this.usuario=resp;
       console.log('usuarioActivo ' + this.usuario.email);
+
+      this.jugador = this.fire.getJugadorByEmail(this.usuario.email);
     
-      this.jugadorServ.getJugadorPorEmail(this.usuario.email).subscribe(ret => {
-        this.jugador = ret;
-        console.log('Usr: ');
-        console.table(this.jugador);
-      });
+      // this.jugadorServ.getJugadorPorEmail(this.usuario.email).subscribe(ret => {
+      //   this.jugador = ret;
+      //   console.log('Usr: ');
+      //   console.table(this.jugador);
+      // });
     });
   }
 

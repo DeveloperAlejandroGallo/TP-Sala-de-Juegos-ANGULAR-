@@ -9,12 +9,29 @@ export class JuegoAdivina extends Juego
         super('Adivina el n\u00FAmero', gano, sessionStorage.getItem('usuario'), 0);
       }
 
+      public toJson() {
+        return {
+          "nombre": this.nombre,
+          "gano": this.gano,
+          "usuario": this.usuario,
+          "puntaje": this.puntaje,
+          "intentos": this.intentos,
+          "fecha": this.fecha,
+          // "jugador": this.jugador,
+          "numeroSecreto": this.numeroSecreto,
+          "respuestaJugador": this.numeroIngresado
+        }
+      }
+
+
+
     public verificar() {
-       
+       let puntaje: number = 0;
         if (this.numeroIngresado == this.numeroSecreto) {
           this.gano = true;
+          puntaje = this.intentos == 1 ? 10 : 1
         }
-        this.registrarJugada(this.gano, 7 - this.intentos);
+        this.registrarJugada(this.gano, puntaje);
         return this.gano;
      }
 
